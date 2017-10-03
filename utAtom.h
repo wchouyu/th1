@@ -2,7 +2,7 @@
 #define UTATOM_H
 #include "atom.cpp"
 #include "variable.cpp"
-#include "Number.cpp"
+#include "number.cpp"
 TEST(Atom, first) {
   ASSERT_TRUE(true);
 }

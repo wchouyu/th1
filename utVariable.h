@@ -2,7 +2,7 @@
 #define UTVARIABLE_H
 #include "atom.cpp"
 #include "variable.cpp"
-#include "Number.cpp"
+#include "number.cpp"
 TEST(Variable, constructor){
   Variable X("X");
   ASSERT_EQ("X", X._symbol);

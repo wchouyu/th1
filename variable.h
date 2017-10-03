@@ -3,7 +3,7 @@
 
 #include <string>
 #include "atom.h"
-#include "Number.h"
+#include "number.h"
 using std::string;
 
 class Variable{

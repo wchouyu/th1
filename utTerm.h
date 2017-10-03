@@ -2,7 +2,7 @@
 #define UTTERM_H
 #include "atom.cpp"
 #include "variable.cpp"
-#include "Number.cpp"
+#include "number.cpp"
 //test Number.value()
 TEST (Number,ctor) {
 	Number num_1("25");
