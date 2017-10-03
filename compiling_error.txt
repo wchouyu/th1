@@ -1,4 +1,0 @@
-C:\Users\user\Documents\GitHub\th1\main.cpp:3:25: fatal error: gtest/gtest.h: No such file or directory
- #include <gtest/gtest.h>
-                         ^
-compilation terminated.

@@ -7,7 +7,7 @@
 using namespace std;
 TEST (Sort, sortByIncreasingPerimeter) {
 	Sort s;
-
+	
 	Rectangle test_graph1(0,0,1,1);
 	Circle test_graph2(0,0,1);
 	vertex p1={0,0};
@@ -16,7 +16,7 @@ TEST (Sort, sortByIncreasingPerimeter) {
 	//Triangle test_graph3({0,0},{0,1},{1,0});
 	Triangle test_graph3(p1,p2,p3);
 	list<Shape *> *shapeList=new list<Shape *>[3];
-
+	
 	/////////////////////////////////
 	shapeList[0].push_back(&test_graph1);
 	shapeList[1].push_back(&test_graph2);
@@ -24,14 +24,10 @@ TEST (Sort, sortByIncreasingPerimeter) {
 	/////////////////////////////////
 	s.sortByIncreasingPerimeter(shapeList);
 	//sortByIncreasingPerimeter(shapeList);
-
-	//ASSERT_EQ("t",shapeList[0].front()->name);
-	//ASSERT_EQ("r",shapeList[1].front()->name);
-	//ASSERT_EQ("c",shapeList[2].front()->name);
-
-	ASSERT_EQ(&test_graph3,shapeList[0].front());
-	ASSERT_EQ(&test_graph1,shapeList[1].front());
-	ASSERT_EQ(&test_graph2,shapeList[2].front());
+	
+	ASSERT_EQ("t",shapeList[0].front()->name);
+	ASSERT_EQ("r",shapeList[1].front()->name);
+	ASSERT_EQ("c",shapeList[2].front()->name);
 }
 
 TEST (Sort, sortByDecreasingPerimeter) {
@@ -44,22 +40,18 @@ TEST (Sort, sortByDecreasingPerimeter) {
 	//Triangle test_graph3({0,0},{0,1},{1,0});
 	Triangle test_graph3(p1,p2,p3);
 	list<Shape *> *shapeList=new list<Shape *>[3];
-
+	
 	/////////////////////////////////
 	shapeList[0].push_back(&test_graph1);
 	shapeList[1].push_back(&test_graph2);
 	shapeList[2].push_back(&test_graph3);
 	/////////////////////////////////
-
+	
 	s.sortByDecreasingPerimeter(shapeList);
-
-	//ASSERT_EQ("c",shapeList[0].front()->name);
-	//ASSERT_EQ("r",shapeList[1].front()->name);
-	//ASSERT_EQ("t",shapeList[2].front()->name);
-
-	ASSERT_EQ(&test_graph2,shapeList[0].front());
-	ASSERT_EQ(&test_graph1,shapeList[1].front());
-	ASSERT_EQ(&test_graph3,shapeList[2].front());
+	
+	ASSERT_EQ("c",shapeList[0].front()->name);
+	ASSERT_EQ("r",shapeList[1].front()->name);
+	ASSERT_EQ("t",shapeList[2].front()->name);
 }
 
 TEST (Sort, sortByIncreasingArea) {
@@ -72,22 +64,18 @@ TEST (Sort, sortByIncreasingArea) {
 	//Triangle test_graph3({0,0},{0,1},{1,0});
 	Triangle test_graph3(p1,p2,p3);
 	list<Shape *> *shapeList=new list<Shape *>[3];
-
+	
 	/////////////////////////////////
 	shapeList[0].push_back(&test_graph1);
 	shapeList[1].push_back(&test_graph2);
 	shapeList[2].push_back(&test_graph3);
 	/////////////////////////////////
-
+	
 	s.sortByIncreasingArea(shapeList);
-
-	//ASSERT_EQ("t",shapeList[0].front()->name);
-	//ASSERT_EQ("c",shapeList[1].front()->name);
-	//ASSERT_EQ("r",shapeList[2].front()->name);
-
-	ASSERT_EQ(&test_graph3,shapeList[0].front());
-	ASSERT_EQ(&test_graph2,shapeList[1].front());
-	ASSERT_EQ(&test_graph1,shapeList[2].front());
+	
+	ASSERT_EQ("t",shapeList[0].front()->name);
+	ASSERT_EQ("c",shapeList[1].front()->name);
+	ASSERT_EQ("r",shapeList[2].front()->name);
 }
 
 TEST (Sort, sortByDecreasingArea) {
@@ -100,22 +88,18 @@ TEST (Sort, sortByDecreasingArea) {
 	//Triangle test_graph3({0,0},{0,1},{1,0});
 	Triangle test_graph3(p1,p2,p3);
 	list<Shape *> *shapeList=new list<Shape *>[3];
-
+	
 	/////////////////////////////////
 	shapeList[0].push_back(&test_graph1);
 	shapeList[1].push_back(&test_graph2);
 	shapeList[2].push_back(&test_graph3);
 	/////////////////////////////////
-
+	
 	s.sortByDecreasingArea(shapeList);
-
-	//ASSERT_EQ("c",shapeList[0].front()->name);
-	//ASSERT_EQ("r",shapeList[1].front()->name);
-	//ASSERT_EQ("t",shapeList[2].front()->name);
-
-	ASSERT_EQ(&test_graph2,shapeList[0].front());
-	ASSERT_EQ(&test_graph1,shapeList[1].front());
-	ASSERT_EQ(&test_graph3,shapeList[2].front());
+	
+	ASSERT_EQ("c",shapeList[0].front()->name);
+	ASSERT_EQ("r",shapeList[1].front()->name);
+	ASSERT_EQ("t",shapeList[2].front()->name);
 }
 
 TEST (Sort, sortByIncreasingCompactness) {
@@ -128,21 +112,18 @@ TEST (Sort, sortByIncreasingCompactness) {
 	//Triangle test_graph3({0,0},{0,1},{1,0});
 	Triangle test_graph3(p1,p2,p3);
 	list<Shape *> *shapeList=new list<Shape *>[3];
-
+	
 	/////////////////////////////////
 	shapeList[0].push_back(&test_graph1);
 	shapeList[1].push_back(&test_graph2);
 	shapeList[2].push_back(&test_graph3);
 	/////////////////////////////////
 	s.sortByIncreasingCompactness(shapeList);
-	//ASSERT_EQ("t",shapeList[0].front()->name);
-	//ASSERT_EQ("r",shapeList[1].front()->name);
-	//ASSERT_EQ("c",shapeList[2].front()->name);
+	ASSERT_EQ("t",shapeList[0].front()->name);
+	ASSERT_EQ("r",shapeList[1].front()->name);
+	ASSERT_EQ("c",shapeList[2].front()->name);
 	// Compactness = area/perimeter
-	ASSERT_EQ(&test_graph3,shapeList[0].front());
-	ASSERT_EQ(&test_graph1,shapeList[1].front());
-	ASSERT_EQ(&test_graph2,shapeList[2].front());
-
+	
 }
 
 #endif
