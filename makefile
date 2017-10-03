@@ -3,22 +3,22 @@ all: madRace utAtom utVariable hw2
 madRace: mainMadRace.o
 	g++ -o madRace mainMadRace.o -lgtest -lpthread
 mainMadRace.o: mainMadRace.cpp madRace.h utMadRace.h
-	g++ --std=c++11 -c mainMadRace.cpp
+	g++ -std=gnu++0x -c mainMadRace.cpp
 
 utAtom: mainAtom.o
 	g++ -o utAtom mainAtom.o -lgtest -lpthread
 mainAtom.o: mainAtom.cpp utAtom.h atom.h
-	g++ --std=c++11 -c mainAtom.cpp
+	g++ -std=gnu++0x -c mainAtom.cpp
 
 utVariable: mainVariable.o
 		g++ -o utVariable mainVariable.o -lgtest -lpthread
 mainVariable.o: mainVariable.cpp utVariable.h variable.h
-		g++ --std=c++11 -c mainVariable.cpp
+		g++ -std=gnu++0x -c mainVariable.cpp
 
 hw2: mainTerm.o 
 		g++ -o hw2 mainTerm.o -lgtest -lpthread
 mainTerm.o: mainTerm.cpp utTerm.h number.h
-		g++ --std=c++11 -c mainTerm.o
+		g++ -std=gnu++0x -c mainTerm.o
 
 
 #exp: mainExp.o
