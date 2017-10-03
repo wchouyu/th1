@@ -1,22 +1,38 @@
 all: madRace utAtom utVariable hw2
 
 madRace: mainMadRace.o
+ifeq (${OS}, Windows_NT)
 	g++ -o madRace mainMadRace.o -lgtest 
+else
+	g++ -o madRace mainMadRace.o -lgtest -lpthread
+endif
 mainMadRace.o: mainMadRace.cpp madRace.h utMadRace.h
 	g++ -std=gnu++0x -c mainMadRace.cpp
 
 utAtom: mainAtom.o
+ifeq (${OS}, Windows_NT)
 	g++ -o utAtom mainAtom.o -lgtest 
+else
+	g++ -o utAtom mainAtom.o -lgtest -lpthread
+endif
 mainAtom.o: mainAtom.cpp utAtom.h atom.h
 	g++ -std=gnu++0x -c mainAtom.cpp
 
 utVariable: mainVariable.o
-		g++ -o utVariable mainVariable.o -lgtest 
+ifeq (${OS}, Windows_NT)
+	g++ -o utVariable mainVariable.o -lgtest 
+else
+	g++ -o utVariable mainVariable.o -lgtest -lpthread
+endif
 mainVariable.o: mainVariable.cpp utVariable.h variable.h
 		g++ -std=gnu++0x -c mainVariable.cpp
 
 hw2: mainTerm.o 
-		g++ -o hw2 mainTerm.o -lgtest
+ifeq (${OS}, Windows_NT)
+	g++ -o hw2 mainTerm.o -lgtest
+else
+	g++ -o hw2 mainTerm.o -lgtest -lpthread
+endif
 mainTerm.o: mainTerm.cpp utTerm.h number.h
 		g++ -std=gnu++0x -c mainTerm.cpp
 
