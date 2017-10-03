@@ -16,7 +16,7 @@ mainVariable.o: mainVariable.cpp utVariable.h variable.h
 		g++ -std=gnu++0x -c mainVariable.cpp
 
 hw2: mainTerm.o 
-		g++ -o hw2 mainTerm.o -lgtest 
+		g++ -o hw2 mainTerm.o -lgtest -lpthread
 mainTerm.o: mainTerm.cpp utTerm.h number.h
 		g++ -std=gnu++0x -c mainTerm.o
 
