@@ -1,6 +1,6 @@
 #ifndef UTVARIABLE_H
 #define UTVARIABLE_H
-//#include "atom.h"
+#include "atom.h"
 #include "variable.h"
 //#include "number.h"
 TEST(Variable, constructor){

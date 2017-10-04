@@ -27,14 +27,14 @@ all:hw2
 #mainVariable.o: mainVariable.cpp utVariable.h variable.h
 #		g++ -std=gnu++0x -c mainVariable.cpp
 
-hw2: mainTerm.o atom.o number.o variable.o
+hw2: main.o atom.o number.o variable.o
 ifeq (${OS}, Windows_NT)
-	g++ -o hw2 mainTerm.o atom.o number.o variable.o -lgtest
+	g++ -o hw2 main.o atom.o number.o variable.o -lgtest
 else
-	g++ -o hw2 mainTerm.o atom.o number.o variable.o -lgtest -lpthread
+	g++ -o hw2 main.o atom.o number.o variable.o -lgtest -lpthread
 endif
-mainTerm.o: mainTerm.cpp  utTerm.h
-		g++ -std=gnu++0x -c mainTerm.cpp
+main.o: main.cpp  utTerm.h
+		g++ -std=gnu++0x -c main.cpp
 atom.o: atom.h atom.cpp
 		g++ -std=gnu++0x -c atom.cpp
 number.o: number.h number.cpp
@@ -64,6 +64,6 @@ variable.o: variable.h variable.cpp
 #list.o: list.h list.cpp term.h var.h
 #	g++ -std=c++11 -c list.cpp
 clean:
-	rm -f *.o madRace utAtom
+	rm -f *.o utVariable utAtom hw2
 stat:
 	wc *.h *.cpp
