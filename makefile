@@ -1,34 +1,26 @@
-all: hw2
+INC_DIR = include
 
-hw2: main.o  atom.o  variable.o number.o
+all: hw1
+
+hw1: main.o Shapes.o Media.o Sort.o
 ifeq (${OS}, Windows_NT)
-	g++ -o hw2 main.o  atom.o  variable.o  number.o  -lgtest 
+	g++ -o hw1 main.o Shapes.o Media.o Sort.o -lgtest
 else
-	g++ -o hw2 main.o  atom.o  variable.o  number.o  -lgtest -lpthread
+	g++ -o hw1 main.o Shapes.o Media.o Sort.o -lgtest -lpthread
 endif
+	
+main.o: main.cpp hw1.h
+	g++ -std=gnu++0x -c main.cpp
+Shapes.o: $(INC_DIR)/Shapes.h Shapes.cpp
+	g++ -std=gnu++0x -c Shapes.cpp
+Media.o: $(INC_DIR)/Media.h Media.cpp
+	g++ -std=gnu++0x -c Media.cpp
+Sort.o: $(INC_DIR)/Sort.h Sort.cpp
+	g++ -std=gnu++0x -c Sort.cpp
 
-main.o: main.cpp utTerm.h
-	g++ -std=gnu++0x -c  main.cpp
-
-
-atom.o: atom.cpp atom.h
-	g++ -std=gnu++0x -c  atom.cpp
-
-
-variable.o: variable.cpp variable.h
-		g++ -std=gnu++0x -c  variable.cpp
-
-
-
-number.o: number.cpp number.h
-		g++ -std=gnu++0x -c  number.cpp
-
-clean:
+clean:	
 ifeq (${OS}, Windows_NT)
 	del *.o *.exe
 else
-	rm -f *.o hw2 utAtom utNumber utVariable
+	rm -f *.o hw1
 endif
-
-stat:
-	wc *.h *.cpp
