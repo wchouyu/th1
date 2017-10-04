@@ -24,7 +24,7 @@ bool Variable::match(Number number){
 		  _assignable = false;
 	  }
 	  else {
-		  if (_value==number.value())
+		  if (_value==number.symbol())
 			ret=true;
 	}
 	  return ret;
