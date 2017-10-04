@@ -5,14 +5,18 @@
 
 using std::string;
 
+#include "number.h"
+#include "variable.h"
 
-class Variable;
-class Number;
+//class Variable;
+//class Number;
 class Atom {
 public:
   Atom (string s):_symbol(s) {}
   Atom (const Atom &a):_symbol(a._symbol){}
-  //bool operator ==(Atom a) {return _symbol == a._symbol;}
+  /*bool operator ==(Atom a) {return match(a);}
+  bool operator =(Variable &var){return match(var);}
+  bool operator =(Number num){return match(num);}*/
 
   bool match(Atom a);
   bool match(Variable &var);

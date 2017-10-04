@@ -2,10 +2,12 @@
 #define VARIABLE_H
 
 #include <string>
-#include "atom.h"
-#include "number.h"
+//#include "atom.h"
+//#include "number.h"
 using std::string;
 
+class Number;
+class Atom;
 class Variable{
 public:
   Variable(string s):_symbol(s){}

@@ -3,11 +3,11 @@
 
 #include <string>
 //#include "atom.h"
-
+#include "variable.h"
 using namespace std;
 
 class Atom;
-class Variable;
+//class Variable;
 
 class Number{
 public:
