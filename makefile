@@ -8,7 +8,7 @@ ifeq (${OS}, Windows_NT)
 else
 	g++ -o hw2 main.o atom.o number.o variable.o -lgtest -lpthread
 endif
-	
+
 main.o: main.cpp utTerm.h
 	g++ -std=gnu++0x -c main.cpp
 atom.o: $(INC_DIR)/atom.h atom.cpp

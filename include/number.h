@@ -12,15 +12,16 @@ class Variable;
 class Number{
 public:
 	//Number (){}
-	Number (int s):_value(s){
+	Number (int s){
 		std::stringstream ss;
 		ss << s;
 		_symbol=ss.str();
+		_value=ss.str();
 	}
 	Number (const Number &num):_value(num._value),_symbol(num._symbol){}
 
 	string symbol(){return _symbol;}
-	int value(){return _value;}
+	string value(){return _value;}
 
 	bool match(Number num);
 	bool match(Atom a);
@@ -29,7 +30,7 @@ public:
 private:
 	
 	string _symbol;
-	int _value;
+	string _value;
 	
 };
 #endif
