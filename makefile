@@ -1,12 +1,12 @@
 INC_DIR = include
 
-all: hw1
+all: hw2
 
-hw1: main.o Shapes.o Media.o Sort.o
+hw2: main.o Shapes.o Media.o Sort.o
 ifeq (${OS}, Windows_NT)
-	g++ -o hw1 main.o Shapes.o Media.o Sort.o -lgtest
+	g++ -o hw2 main.o Shapes.o Media.o Sort.o -lgtest
 else
-	g++ -o hw1 main.o Shapes.o Media.o Sort.o -lgtest -lpthread
+	g++ -o hw2 main.o Shapes.o Media.o Sort.o -lgtest -lpthread
 endif
 	
 main.o: main.cpp hw1.h
