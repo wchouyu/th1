@@ -1,8 +1,10 @@
 #ifndef UTTERM_H
 #define UTTERM_H
-#include "atom.cpp"
-#include "variable.cpp"
-#include "number.cpp"
+
+#include "atom.h"
+#include "variable.h"
+#include "number.h"
+
 //test Number.value()
 TEST (Number,ctor) {
 	Number num_25(25);
@@ -45,6 +47,7 @@ TEST (Number, matchSuccessToVar) {
 
 //?- tom=25.
 //false.
+
 TEST (Atom, matchFailureDiffConstant) {
 	Atom tom("tom");
 	Number num_25(25);
@@ -122,4 +125,6 @@ TEST(Variable, reAssignTheSameAtom){
 	X.match(tom);
 	ASSERT_TRUE(X.match(tom));
 }
+
+
 #endif
