@@ -1,7 +1,7 @@
 #ifndef UTVARIABLE_H
 #define UTVARIABLE_H
-#include "include/atom.h"
-#include "include/variable.h"
+#include "atom.h"
+#include "variable.h"
 //#include "number.h"
 TEST(Variable, constructor){
   Variable X("X");

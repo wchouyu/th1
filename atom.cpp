@@ -1,6 +1,6 @@
-#include "include/atom.h"
-#include "include/variable.h"
-#include "include/number.h"
+#include "atom.h"
+#include "variable.h"
+#include "number.h"
 
 bool Atom::match(Atom a)
 {
