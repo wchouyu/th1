@@ -8,7 +8,7 @@
 //test Number.value()
 TEST (Number,ctor) {
 	Number num_25(25);
-	ASSERT_EQ(25,num_25.value());
+	ASSERT_EQ("25",num_25.value());
 }
 //test Number.symbol()
 TEST (Number, symbol) {
@@ -42,7 +42,8 @@ TEST (Number, matchFailureDiffConstant) {
 TEST (Number, matchSuccessToVar) {
 	Number num_25(25);
 	Variable X("X");
-	ASSERT_TRUE(num_25.match(X));
+	num_25.match(X);
+	ASSERT_EQ("25",X.value());
 }
 
 //?- tom=25.

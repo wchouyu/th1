@@ -6,30 +6,42 @@
 #include <sstream>
 using namespace std;
 
-class Atom;
-class Variable;
+//class Atom;
+//class Variable;
 
 class Number{
 public:
 	//Number (){}
-	Number (int s):_value(s){
+	Number (int s){
 		std::stringstream ss;
 		ss << s;
 		_symbol=ss.str();
+		_value=ss.str();
 	}
-	Number (const Number &num):_value(num._value),_symbol(num._symbol){}
+	//Number (const Number &num):_value(num._value),_symbol(num._symbol){}
 
+	string value(){ return _value; }
 	string symbol(){return _symbol;}
-	int value(){return _value;}
+	int class_number(){return 1;}
+	
 
-	bool match(Number num);
-	bool match(Atom a);
-	bool match(Variable &var);
+	template <class T>
+	bool match(T &input)
+	{
+		if (input.class_number()==0)
+			return false;
+		else if (input.class_number()==1)
+			return input.value()==_value;
+		else
+			return input.match(*this);
+	}
+	//bool match(Variable &var);
+	//bool match(Number num);
 	
 private:
 	
 	string _symbol;
-	int _value;
+	string _value;
 	
 };
 #endif
