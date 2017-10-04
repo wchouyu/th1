@@ -1,8 +1,8 @@
 #ifndef UTVARIABLE_H
 #define UTVARIABLE_H
-#include "atom.cpp"
-#include "variable.cpp"
-#include "number.cpp"
+//#include "atom.h"
+#include "variable.h"
+//#include "number.h"
 TEST(Variable, constructor){
   Variable X("X");
   ASSERT_EQ("X", X._symbol);
