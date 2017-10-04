@@ -5,11 +5,9 @@
 
 using std::string;
 
-#include "number.h"
-#include "variable.h"
 
-//class Variable;
-//class Number;
+class Variable;
+class Number;
 class Atom {
 public:
   Atom (string s):_symbol(s) {}

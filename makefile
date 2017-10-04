@@ -1,42 +1,46 @@
-all: madRace utAtom utVariable hw2
+#all: madRace utAtom utVariable hw2
+all:hw2
+#madRace: mainMadRace.o
+#ifeq (${OS}, Windows_NT)
+#	g++ -o madRace mainMadRace.o -lgtest 
+#else
+#	g++ -o madRace mainMadRace.o -lgtest -lpthread
+#endif
+#mainMadRace.o: mainMadRace.cpp madRace.h utMadRace.h
+#	g++ -std=gnu++0x -c mainMadRace.cpp
 
-madRace: mainMadRace.o
-ifeq (${OS}, Windows_NT)
-	g++ -o madRace mainMadRace.o -lgtest 
-else
-	g++ -o madRace mainMadRace.o -lgtest -lpthread
-endif
-mainMadRace.o: mainMadRace.cpp madRace.h utMadRace.h
-	g++ -std=gnu++0x -c mainMadRace.cpp
+#utAtom: mainAtom.o
+#ifeq (${OS}, Windows_NT)
+#	g++ -o utAtom mainAtom.o -lgtest 
+#else
+#	g++ -o utAtom mainAtom.o -lgtest -lpthread
+#endif
+#mainAtom.o: mainAtom.cpp utAtom.h atom.h
+#	g++ -std=gnu++0x -c mainAtom.cpp
 
-utAtom: mainAtom.o
-ifeq (${OS}, Windows_NT)
-	g++ -o utAtom mainAtom.o -lgtest 
-else
-	g++ -o utAtom mainAtom.o -lgtest -lpthread
-endif
-mainAtom.o: mainAtom.cpp utAtom.h atom.h
-	g++ -std=gnu++0x -c mainAtom.cpp
+#utVariable: mainVariable.o
+#ifeq (${OS}, Windows_NT)
+#	g++ -o utVariable mainVariable.o -lgtest 
+#else
+#	g++ -o utVariable mainVariable.o -lgtest -lpthread
+#endif
+#mainVariable.o: mainVariable.cpp utVariable.h variable.h
+#		g++ -std=gnu++0x -c mainVariable.cpp
 
-utVariable: mainVariable.o
+hw2: mainTerm.o atom.o number.o variable.o
 ifeq (${OS}, Windows_NT)
-	g++ -o utVariable mainVariable.o -lgtest 
+	g++ -o hw2 mainTerm.o atom.o number.o variable.o -lgtest
 else
-	g++ -o utVariable mainVariable.o -lgtest -lpthread
+	g++ -o hw2 mainTerm.o atom.o number.o variable.o -lgtest -lpthread
 endif
-mainVariable.o: mainVariable.cpp utVariable.h variable.h
-		g++ -std=gnu++0x -c mainVariable.cpp
-
-hw2: mainTerm.o 
-ifeq (${OS}, Windows_NT)
-	g++ -o hw2 mainTerm.o -lgtest
-else
-	g++ -o hw2 mainTerm.o -lgtest -lpthread
-endif
-mainTerm.o: mainTerm.cpp utTerm.h number.h
+mainTerm.o: mainTerm.cpp  utTerm.h
 		g++ -std=gnu++0x -c mainTerm.cpp
-
-
+atom.o: atom.h atom.cpp
+		g++ -std=gnu++0x -c atom.cpp
+number.o: number.h number.cpp
+		g++ -std=gnu++0x -c number.cpp
+variable.o: variable.h variable.cpp
+		g++ -std=gnu++0x -c variable.cpp
 #exp: mainExp.o
 #	g++ -o exp mainExp.o -lgtest -lpthread
 #mainExp.o: mainExp.cpp exp.h global.h
