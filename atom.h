@@ -5,24 +5,43 @@
 
 using std::string;
 
+class Term{
 
-class Variable;
-class Number;
-class Atom {
 public:
-  Atom (string s):_symbol(s) {}
-  Atom (const Atom &a):_symbol(a._symbol){}
-  /*bool operator ==(Atom a) {return match(a);}
-  bool operator =(Variable &var){return match(var);}
-  bool operator =(Number num){return match(num);}*/
+  virtual string symbol() const= 0;
 
-  bool match(Atom a);
-  bool match(Variable &var);
-  bool match(Number num);
+  virtual string value() const{return symbol();};
 
-  string _symbol;
+  virtual bool match(Term & term) 
+  {
+	return symbol() == term.symbol();
+  }
+  virtual int class_number(){return -1;};
+
+};
+
+class Atom : public Term{
+public:
+	Atom (string s):_symbol(s),_value(s) {}
+	string symbol() const{return _symbol;}
+	string value(){return _value;}
+	int class_number(){return 0;}
+
+	//template <class T>
+	bool match(Term &input)
+	{
+		if (input.class_number()==0)
+			return input.value() == _symbol;
+		else if (input.class_number()==1)
+			return false;
+		else
+			return input.match(*this);
+	}
+  
+  
 private:
-	//Number num;
+	string const _symbol;
+	string _value;
 };
 
 #endif
