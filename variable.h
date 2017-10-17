@@ -29,7 +29,7 @@ public:
 		
     }
 	else {
-		if (_value==input.symbol())
+		if (_value==input.value())
 			ret=true;
 		/*if (input.class_number()==2)
 			ret=input.match(*this);*/
