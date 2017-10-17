@@ -1,4 +1,4 @@
-all: hw2
+all: hw3
 
 hw2: main.o 
 ifeq (${OS}, Windows_NT)
