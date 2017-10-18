@@ -34,8 +34,8 @@ public:
 	{
 
 		//std::cout << "code dumped place\n";
-		if (input.class_number()==2)
- 			ret=input.match(*this);
+		/*if (input.class_number()==2)
+ 			ret=input.match(*this);*/
 		if (_value==input.value())
 			ret=true;
 	}
