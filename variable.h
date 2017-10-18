@@ -3,7 +3,7 @@
 
 #include <string>
 #include "atom.h"
-//#include "number.h"
+#include "number.h"
 using std::string;
 
 //class Number;
@@ -34,7 +34,10 @@ public:
 	{
 
 		//ret=input.match(*this);
-		ret=input.match(*this);
+		
+		Number num(atof(_value.c_str()));
+		input.match(num);
+
   		if (_value==input.value())
   			ret=true;
 	}
