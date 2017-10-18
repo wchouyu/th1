@@ -33,11 +33,10 @@ public:
 	else 
 	{
 
-		//std::cout << "code dumped place\n";
-		/*if (input.class_number()==2)
- 			ret=input.match(*this);*/
-		if (_value==input.value())
-			ret=true;
+		//ret=input.match(*this);
+		ret=input.match(*this);
+  		if (_value==input.value())
+  			ret=true;
 	}
     return ret;
   }
