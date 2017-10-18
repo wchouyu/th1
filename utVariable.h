@@ -5,7 +5,7 @@
 #include "atom.h"
 #include "number.h"
 
-
+/*
 TEST(Variable, constructor){
   Variable X("X");
   ASSERT_EQ("X", X.symbol());
@@ -105,7 +105,31 @@ TEST (Variable, num1_to_varZ_to_varX_and_varY_to_varX) {
 	ASSERT_EQ("1",Y.value());
 	ASSERT_EQ("1",Z.value());
 }
+*/
+//Y=X,1=X
+//
+TEST (Variable, 56varY_to_varX_and_num1_to_varX)
+{
+	Variable X("X");
+	Variable Y("Y");
+	Number num(1);
 
+	num.match(X);
+	Y.match(X);
+	ASSERT_TRUE(X.match(num));
+}
+//Y=X,1=Y
+//
+TEST (Variable, 56varY_to_varX_and_num1_to_varY)
+{
+	Variable X("X");
+	Variable Y("Y");
+	Number num(1);
+
+	Y.match(num);
+	X.match(Y);
+	ASSERT_EQ("1",X.value());
+}
 
 
 // Give there is a Struct s contains Variable X
