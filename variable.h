@@ -14,31 +14,33 @@ public:
   Variable(string s):_symbol(s),_value(s){}
   
   string value()const{return _value;}
-  string symbol()const {return _symbol;}
+  string symbol()const{return _symbol;}
   
   int class_number(){return 2;}
+  
 
   //template <class T>
   bool match( Term  &input)
   {
 	bool ret = _assignable;
-    if(_assignable){
-      _value=input.value();
-	  //std::cout<<input.value() <<"\n";
-      _assignable = false;
+	//std::cout << _symbol <<"=>assignable:" <<_assignable<<"\n";
+    if(_assignable)
+	{
+		_value=input.value();
+		_assignable = false;
 		
     }
-	else {
+	else 
+	{
+		//ret=input.match(*this);
 		if (_value==input.value())
 			ret=true;
-		/*if (input.class_number()==2)
-			ret=input.match(*this);*/
 	}
     return ret;
   }
-  //bool match(Number number);
-  //bool match(Variable variable);
-  
+
+	
+
 private:
 	string const _symbol;
 	string _value;

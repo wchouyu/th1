@@ -7,7 +7,7 @@ else
 	g++ -o hw3 main.o -lgtest -pthread
 endif
 
-main.o: main.cpp atom.h variable.h number.h utVariable.h utStruct.h
+main.o: main.cpp atom.h variable.h number.h struct.h utVariable.h utStruct.h
 	g++ --std=gnu++0x -c main.cpp
 
 

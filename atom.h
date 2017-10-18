@@ -37,7 +37,7 @@ public:
 		else
 			return input.match(*this);
 	}
-  
+
   
 private:
 	string const _symbol;
