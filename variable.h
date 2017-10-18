@@ -18,7 +18,7 @@ public:
   
   int class_number(){return 2;}
   
-
+  bool assign(){return _assignable;};
   //template <class T>
   bool match( Term  &input)
   {
@@ -26,13 +26,15 @@ public:
 	//std::cout << _symbol <<"=>assignable:" <<_assignable<<"\n";
     if(_assignable)
 	{
+		
 		_value=input.value();
 		_assignable = false;
-		
+		if (input.class_number()==2)
+			if (input.assign())
+				_assignable = true;
     }
 	else 
 	{
-
 		//ret=input.match(*this);
 		
 		Number num(atof(_value.c_str()));

@@ -116,12 +116,13 @@ TEST (Variable, test)
 	Variable Y("Y");
 	Number _1(1);
 
-	
+	X.match(X);
 	_1.match(X);
-	Y.match(X);
-	//X.match(Y);
+	
 
+	//X.match(Y);
 	ASSERT_EQ("1",X.value());
+	//ASSERT_TRUE(X.match(_1));
 }
 /*
 Variable.varY_to_varX_and_num1_to_varX
