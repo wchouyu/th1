@@ -23,7 +23,7 @@ public:
     return _name;
   }
   string symbol() const{
-	 
+	
     string ret =_name.symbol() + "(";
     for(int i = 0; i < _args.size() - 1 ; i++){
       ret += _args[i]-> symbol() + ", ";
@@ -31,19 +31,16 @@ public:
     ret += _args[_args.size()-1]-> symbol() + ")";
     return  ret;
   }
-  string value() 
+  string value() const
   {
-	   std::cout << "this is:" << _name.value()  << " => value_function called\n";
-	 string ret =_name.value() + "(";
-    for(int i = 0; i < _args.size() - 1 ; i++)
-	{
-		
-      ret += _args[i]-> value() + ", ";
-	  
-    }
 
-	std::cout << _args[_args.size()-1]-> value() << "\n";
+	//std::cout <<  _name.symbol()  << " call value_function \n";
+	string ret =_name.symbol() + "(";
+    for(int i = 0; i < _args.size() - 1 ; i++){
+      ret += _args[i]-> value() + ", ";
+    }
     ret += _args[_args.size()-1]-> value() + ")";
+	//std::cout << _args[_args.size()-1]-> value() << "\n";
     return  ret;
   }
 

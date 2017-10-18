@@ -10,7 +10,8 @@ class Term{
 public:
   virtual string symbol() const= 0;
 
-  virtual string value() const{return symbol();};
+  //virtual string value() const{return symbol();};
+  virtual string value() const=0;
 
   virtual bool match(Term & term) 
   {
@@ -24,7 +25,7 @@ class Atom : public Term{
 public:
 	Atom (string s):_symbol(s),_value(s) {}
 	string symbol() const{return _symbol;}
-	string value(){return _value;}
+	string value()const{return _value;}
 	int class_number(){return 0;}
 
 	//template <class T>

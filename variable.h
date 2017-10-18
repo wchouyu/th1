@@ -13,7 +13,7 @@ class Variable : public Term{
 public:
   Variable(string s):_symbol(s),_value(s){}
   
-  string value()const{return _value;}
+  string value()const{ return _value;}
   string symbol()const{return _symbol;}
   
   int class_number(){return 2;}
@@ -32,7 +32,7 @@ public:
     }
 	else 
 	{
-		//ret=input.match(*this);
+		ret=input.match(*this);
 		if (_value==input.value())
 			ret=true;
 	}
