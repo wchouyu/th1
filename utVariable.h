@@ -117,9 +117,10 @@ TEST (Variable, test)
 	Number _1(1);
 
 	
-	_1.match(Y);
+	_1.match(X);
 	Y.match(X);
 	//X.match(Y);
+
 	ASSERT_EQ("1",X.value());
 }
 /*
