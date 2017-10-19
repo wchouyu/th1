@@ -96,9 +96,10 @@ TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 	Variable X("X");
 	Variable Z("Z");
 	Number num(1);
+	Atom tom("tom");
 	Number two(2);
 	//X.match(num);
-	ASSERT_TRUE(X.match(X));
+	ASSERT_FALSE(X.match(tom));
 
 
 	//Y.match(Z);
