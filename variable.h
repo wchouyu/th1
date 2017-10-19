@@ -31,7 +31,7 @@ public:
   
   bool match( Term  &input)
   {
-	
+	std::cout << "in match a:" << a <<"\n";
 	bool ret = _assignable;
 	
     if(_assignable)
@@ -53,6 +53,7 @@ public:
 				again[a]=this;
 				again_ver2[a]=&input;
 				a++;
+				
 			}
 			else
 			{
@@ -82,14 +83,15 @@ public:
 		{
 			//std::cout << "forwarding\n";
 			again[a]->match(num);
-			again[a]=NULL;
+			std::cout << "in forwarding	a:" << a << "again[a]:" << again[a] <<"\n";  
+			//again[a]=NULL;
 			
 		}
 		if (again_ver2[a]!=NULL)
 		{
 			//std::cout << "forwarding_ver2\n";
 			again_ver2[a]->match(num);
-			again_ver2[a]=NULL;
+			//again_ver2[a]=NULL;
 		}
 	}
 ////////////
