@@ -38,15 +38,25 @@ public:
 	{
 		_value=input.value();
 		_assignable = false;
-		if (_symbol==input.symbol())
+
+		
+		if (_symbol==input.symbol()){
 			_assignable = true;
+			return true;//1019_0318
+		}
 		if (input.class_number()==2)
+		{
 			if (input.assign()){
 				_assignable = true;
 				again[a]=this;
 				again_ver2[a]=&input;
 				a++;
 			}
+			else
+			{
+				return true;
+			}
+		}
     }
 	else 
 	{

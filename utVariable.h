@@ -98,6 +98,7 @@ TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 	Number num(1);
 
 	Y.match(num);
+
 	X.match(Y);
 	A.match(Y);
 	ASSERT_EQ("1",A.value());
