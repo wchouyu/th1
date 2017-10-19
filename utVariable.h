@@ -98,7 +98,7 @@ TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 	Number num(1);
 	Number two(2);
 	//X.match(num);
-	ASSERT_FALSE(X.match(two));
+	ASSERT_TRUE(X.match(X));
 
 
 	//Y.match(Z);
