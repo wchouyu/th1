@@ -39,6 +39,8 @@ public:
 		_value=input.value();
 		_assignable = false;
 
+		if (input.class_number()!=2)
+			return true;
 		
 		if (_symbol==input.symbol()){
 			_assignable = true;
