@@ -88,7 +88,7 @@ public:
 	{
 		a--;
 		
-		if (b==4 &&_assignable==false)
+		/*if (b==4 &&_assignable==false)
 		{
 			b=3;
 			Atom at2(str_var->value());
@@ -98,7 +98,7 @@ public:
 			std::cout <<str_var->value() <<"\n";
 			std::cout <<at2.value() <<"\n";
 			return ret;
-		}
+		}*/
 		Atom at(_value);
 		//std::cout << "before if again_ver2 again input: " << num.value() <<"\n";
 		if (again[a]!=NULL)
