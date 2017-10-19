@@ -61,12 +61,12 @@ public:
 				again[a]=this;
 				again_ver2[a]=&input;
 				a++;
-				if (input.class_number()==4)
+				/*if (input.class_number()==4)
 				{
 					_assignable = true;
 					str_var=&input;
 					b=4;
-				}
+				}*/
 			}
 
 			else
