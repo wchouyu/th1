@@ -18,7 +18,7 @@ using std::string;
 int a=0;
 Term *again[5]={NULL};
 int b=3;
-Term *str_var=NULL;
+Term *str_var[5]={NULL};
 class Variable : public Term{
 public:
   Variable(string s):_symbol(s),_value(s){}
@@ -66,7 +66,7 @@ public:
 		else if (input.class_number()==4)	
 		{
 				_assignable = true;
-				str_var=&input;
+				//str_var[0]=&input;
 				b=4;
 				again[a]=this;
 				a++;
