@@ -99,9 +99,9 @@ TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 
 	Y.match(num);
 	X.match(Y);
-	A.match(X);
+	A.match(Y);
 	ASSERT_EQ("1",A.value());
-	std::cout << "ut1,";
+	
 }
 
 

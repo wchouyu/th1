@@ -31,9 +31,9 @@ public:
   
   bool match( Term  &input)
   {
-	std::cout << "1,";
+	
 	bool ret = _assignable;
-	std::cout << "2,";
+	
     if(_assignable)
 	{
 		_value=input.value();
@@ -56,7 +56,7 @@ public:
   		if (_value==input.value())
   			ret=true;
 	}
-	std::cout << "3,";
+	
 
 	if (a!=0 && _assignable ==false)
 	{
@@ -75,7 +75,7 @@ public:
 		}
 	}
 
-	std::cout << "4\n";
+	
 	
 	/*if (a==0)
 		again[a]=NULL;*/
