@@ -19,7 +19,7 @@ int a=0;
 Term *again[5]={NULL};
 class Variable : public Term{
 public:
-  Variable(string s):_symbol(s),_value(s){}
+  Variable(string s):_symbol(s),_value(s){std::cout << "var_1,";}
   
   string value()const{ return _value;}
   string symbol()const{return _symbol;}
@@ -68,19 +68,14 @@ public:
 			std::cout << "forwarding\n";
 			again[a]->match(num);
 		}
-	}
-	std::cout << "4,";
-	if (a!=0 && _assignable ==false)
-	{
-		a--;
-		Number num(atof(_value.c_str()));
 		if (again_ver2[a]!=NULL)
 		{
 			std::cout << "forwarding_ver2\n";
 			again_ver2[a]->match(num);
 		}
 	}
-	std::cout << "5,";
+
+	std::cout << "4\n";
 	
 	/*if (a==0)
 		again[a]=NULL;*/
