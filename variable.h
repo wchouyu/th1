@@ -18,7 +18,7 @@ using std::string;
 int a=0;
 Term *again[5]={NULL};
 int b=3;
-Term *str_var;
+Term *str_var=NULL;
 class Variable : public Term{
 public:
   Variable(string s):_symbol(s),_value(s){}
@@ -48,14 +48,14 @@ public:
 			return true;//1019_0318
 		}
 
-		else if (input.class_number()==2)
+		else if (input.class_number()==2||input.class_number()==4)
 		{
-			/*if (input.class_number()==4)	
+			if (input.class_number()==4)	
 			{
 				_assignable = true;
 				str_var=&input;
 				b=4;
-			}*/
+			}
 			if (input.assign()){
 				_assignable = true;
 				again[a]=this;
