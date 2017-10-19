@@ -96,19 +96,17 @@ TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 	Variable X("X");
 	Variable Z("Z");
 	Number num(1);
-	Atom tom("tom");
-	Number two(2);
-	//X.match(num);
-	ASSERT_FALSE(X.match(tom));
-
-
-	//Y.match(Z);
+	X.match(Y);
 	
-	//Z.match(num);
 
-	//ASSERT_EQ("1",X.value());
-	//ASSERT_EQ("1",Y.value());
-	//ASSERT_EQ("1",Z.value());
+
+	Y.match(Z);
+	
+	Z.match(num);
+
+	ASSERT_EQ("1",X.value());
+	ASSERT_EQ("1",Y.value());
+	ASSERT_EQ("1",Z.value());
 	
 }
 

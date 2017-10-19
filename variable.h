@@ -39,14 +39,13 @@ public:
 		_value=input.value();
 		_assignable = false;
 
-		if (input.class_number()!=2)
-			return true;
+		
 		
 		if (_symbol==input.symbol()){
 			_assignable = true;
 			return true;//1019_0318
 		}
-		
+
 		else if (input.class_number()==2)
 		{
 			if (input.assign()){
@@ -60,6 +59,7 @@ public:
 				return true;
 			}
 		}
+		
     }
 	else 
 	{
@@ -71,7 +71,10 @@ public:
   		if (_value==input.value())
   			ret=true;
 	}
-	
+	//////////////
+	if (input.class_number()!=2)
+			return ret;
+	/////////////
 
 	if (a!=0 && _assignable ==false)
 	{
