@@ -31,13 +31,11 @@ public:
   
   bool match( Term  &input)
   {
-	
 	//std::cout << "in match a:" << a <<"\n";
 	bool ret = _assignable;
 	
     if(_assignable)
 	{
-
 		_value=input.value();
 		_assignable = false;
 		//std::cout << "input:" <<input.symbol()<<"\t"<<input.value() << "\n";
@@ -45,12 +43,11 @@ public:
 		
 		if (_symbol==input.symbol()){
 			_assignable = true;
-			return true;
+			return true;//1019_0318
 		}
 
 		else if (input.class_number()==2)
 		{
-			
 			if (input.assign()){
 				_assignable = true;
 				again[a]=this;
