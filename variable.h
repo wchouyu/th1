@@ -69,7 +69,7 @@ public:
 				//str_var[0]=&input;
 				//b++;
 				//again[a]=this;
-				//a++;
+				a++;
 		}
 
     }
