@@ -80,19 +80,19 @@ public:
 		Number num(atof(_value.c_str()));
 		if (again[a]!=NULL)
 		{
-			std::cout << "forwarding\n";
+			//std::cout << "forwarding\n";
 			again[a]->match(num);
+			again[a]=NULL;
+			
 		}
 		if (again_ver2[a]!=NULL)
 		{
-			std::cout << "forwarding_ver2\n";
+			//std::cout << "forwarding_ver2\n";
 			again_ver2[a]->match(num);
+			again_ver2[a]=NULL;
 		}
 	}
-				//////////////
-	if (input.class_number()!=2)
-			return ret;
-	/////////////
+////////////
 	
 	
 	/*if (a==0)
