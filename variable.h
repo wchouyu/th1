@@ -44,8 +44,7 @@ public:
 			_assignable = true;
 			return true;//1019_0318
 		}
-		if (class_number()!=2)
-			return ret;
+		
 		else if (input.class_number()==2)
 		{
 			if (input.assign()){
@@ -62,8 +61,10 @@ public:
     }
 	else 
 	{
-		Number num(atof(_value.c_str()));
-		input.match(num);
+		if (input.class_number()==2){
+			Number num(atof(_value.c_str()));
+			input.match(num);
+		}
 
   		if (_value==input.value())
   			ret=true;

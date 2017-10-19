@@ -96,10 +96,11 @@ TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 	Variable X("X");
 	Variable Z("Z");
 	Number num(1);
-
-	X.match(Y);
+	Number two(2);
+	X.match(num);
+	ASSERT_FALSE(X.match(two));
 	Y.match(Z);
-
+	
 	//Z.match(num);
 
 	//ASSERT_EQ("1",X.value());
