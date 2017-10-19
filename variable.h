@@ -38,7 +38,7 @@ public:
 	{
 		_value=input.value();
 		_assignable = false;
-
+		//std::cout << "input:" <<input.symbol()<<"\t"<<input.value() << "\n";
 		
 		
 		if (_symbol==input.symbol()){
@@ -80,11 +80,13 @@ public:
 	{
 		a--;
 		
-		Number num(atof(_value.c_str()));
+		
+		Atom at(_value);
+		//std::cout << "before if again_ver2 again input: " << num.value() <<"\n";
 		if (again[a]!=NULL)
 		{
 			//std::cout << "forwarding\n";
-			again[a]->match(num);
+			again[a]->match(at);
 			//std::cout << "in forwarding	a:" << a << "again[a]:" << again[a] <<"\n";  
 			//again[a]=NULL;
 			
@@ -92,7 +94,9 @@ public:
 		if (again_ver2[a]!=NULL)
 		{
 			//std::cout << "forwarding_ver2\n";
-			again_ver2[a]->match(num);
+			//std::cout << "before again_ver2 again input: " << num.value() <<"\n";
+			again_ver2[a]->match(at);
+			//std::cout << "again_ver2 again input: " << num.value() << "\n";
 			//again_ver2[a]=NULL;
 		}
 	}
