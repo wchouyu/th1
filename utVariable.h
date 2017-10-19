@@ -148,6 +148,7 @@ Variable.Struct2
 // When Y matches Struct s
 // Then #symbol() of Y should return "Y"
 // And #value() of Y should return "s(X)"
+/*
 TEST (Variable, Struct1) {
 	Variable X("X");
 	Variable Y("Y");
@@ -176,5 +177,5 @@ TEST (Variable, Struct2) {
 	ASSERT_EQ("Y",Y.symbol());
 	ASSERT_EQ("s(X)",Y.value());
 }
-
+*/
 #endif
