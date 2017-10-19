@@ -17,6 +17,8 @@ using std::string;
 
 int a=0;
 Term *again[5]={NULL};
+int b=3;
+Term *str_var;
 class Variable : public Term{
 public:
   Variable(string s):_symbol(s),_value(s){}
@@ -46,8 +48,14 @@ public:
 			return true;//1019_0318
 		}
 
-		else if (input.class_number()==2)
+		else if (input.class_number()==2||input.class_number()==4)
 		{
+			if (input.class_number()==4)	
+			{
+				_assignable = true;
+				str_var=&input;
+				b=4;
+			}
 			if (input.assign()){
 				_assignable = true;
 				again[a]=this;
@@ -80,7 +88,17 @@ public:
 	{
 		a--;
 		
-		
+		if (b==4 &&_assignable==false)
+		{
+			b=3;
+			Atom at2(str_var->value());
+			if (str_var!=NULL)
+				if (again[a]!=NULL)
+					again[a]->match(at2);
+			std::cout <<str_var->value() <<"\n";
+			std::cout <<at2.value() <<"\n";
+			return ret;
+		}
 		Atom at(_value);
 		//std::cout << "before if again_ver2 again input: " << num.value() <<"\n";
 		if (again[a]!=NULL)
