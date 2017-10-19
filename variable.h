@@ -45,7 +45,7 @@ public:
 		
 		if (_symbol==input.symbol()){
 			_assignable = true;
-			return true;//1019_0318
+			return true;
 		}
 
 		else if (input.class_number()==2)
