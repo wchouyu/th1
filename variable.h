@@ -48,14 +48,9 @@ public:
 			return true;//1019_0318
 		}
 
-		else if (input.class_number()==2||input.class_number()==4)
+		else if (input.class_number()==2)
 		{
-			if (input.class_number()==4)	
-			{
-				_assignable = true;
-				str_var=&input;
-				b=4;
-			}
+
 			if (input.assign()){
 				_assignable = true;
 				again[a]=this;
@@ -67,6 +62,14 @@ public:
 			{
 				return true;
 			}
+		}
+		else if (input.class_number()==4)	
+		{
+				_assignable = true;
+				str_var=&input;
+				b=4;
+				again[a]=this;
+				a++;
 		}
 
     }
