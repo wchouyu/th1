@@ -19,7 +19,7 @@ int a=0;
 Term *again[5]={NULL};
 class Variable : public Term{
 public:
-  Variable(string s):_symbol(s),_value(s){std::cout << "var_1,";}
+  Variable(string s):_symbol(s),_value(s){}
   
   string value()const{ return _value;}
   string symbol()const{return _symbol;}

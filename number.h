@@ -16,7 +16,6 @@ public:
 		ss << value;
 		//_symbol=ss.str();
 		_value=ss.str();
-		std::cout << "num_1,";
 	}
 	
 
