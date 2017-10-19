@@ -59,10 +59,7 @@ public:
 				return true;
 			}
 		}
-			//////////////
-	if (input.class_number()!=2)
-			return ret;
-	/////////////
+
     }
 	else 
 	{
@@ -75,7 +72,7 @@ public:
   			ret=true;
 	}
 
-
+	/////////
 	if (a!=0 && _assignable ==false)
 	{
 		a--;
@@ -92,7 +89,10 @@ public:
 			again_ver2[a]->match(num);
 		}
 	}
-
+				//////////////
+	if (input.class_number()!=2)
+			return ret;
+	/////////////
 	
 	
 	/*if (a==0)
