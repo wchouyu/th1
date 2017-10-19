@@ -173,7 +173,8 @@ TEST (Variable, Struct2) {
 	Y.match(s);
 	X.match(teddy);
 	ASSERT_EQ("Y",Y.symbol());
-	ASSERT_EQ("s(X)",Y.value());
+	
+	ASSERT_EQ("s(teddy)",Y.value());
 }
 
 #endif
