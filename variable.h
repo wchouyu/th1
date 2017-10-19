@@ -31,7 +31,7 @@ public:
   
   bool match( Term  &input)
   {
-	std::cout << "in match a:" << a <<"\n";
+	//std::cout << "in match a:" << a <<"\n";
 	bool ret = _assignable;
 	
     if(_assignable)
@@ -85,7 +85,7 @@ public:
 		{
 			//std::cout << "forwarding\n";
 			again[a]->match(num);
-			std::cout << "in forwarding	a:" << a << "again[a]:" << again[a] <<"\n";  
+			//std::cout << "in forwarding	a:" << a << "again[a]:" << again[a] <<"\n";  
 			//again[a]=NULL;
 			
 		}
