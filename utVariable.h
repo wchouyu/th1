@@ -80,6 +80,7 @@ TEST (Variable, num1_to_varY_and_varX_match_varY) {
 	Variable Y("Y");
 	Variable X("X");
 	Number num(1);
+
 	Y.match(num);
 	X.match(Y);
 	ASSERT_EQ("1",X.value());
@@ -93,10 +94,13 @@ TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 	
 	Variable Y("Y");
 	Variable X("X");
+	Variable A("A");
 	Number num(1);
+
 	Y.match(num);
 	X.match(Y);
-	ASSERT_EQ("1",X.value());
+	A.match(X);
+	ASSERT_EQ("1",A.value());
 	std::cout << "ut1,";
 }
 
