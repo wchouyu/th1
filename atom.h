@@ -18,7 +18,7 @@ public:
 	return symbol() == term.symbol();
   }
   virtual int class_number(){return -1;};
-	virtual bool assign(){};
+
 };
 
 class Atom : public Term{
