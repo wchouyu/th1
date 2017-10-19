@@ -85,6 +85,7 @@ TEST (Variable, num1_to_varY_and_varX_match_varY) {
 	ASSERT_EQ("1",X.value());
 }
 
+/*
 // ?- X=Y, Y=Z, Z=1
 // X=1, Y=1, Z=1
 TEST (Variable, num1_to_varZ_to_varY_to_varX) {
@@ -111,7 +112,7 @@ TEST (Variable, num1_to_varZ_to_varX_and_varY_to_varX) {
 	ASSERT_EQ("1",Y.value());
 	ASSERT_EQ("1",Z.value());
 }
-
+*/
 /*
 //////////////////////////////////////////////////////////////////
 //Y=X,1=X;
@@ -148,7 +149,7 @@ Variable.Struct2
 // When Y matches Struct s
 // Then #symbol() of Y should return "Y"
 // And #value() of Y should return "s(X)"
-
+/*
 TEST (Variable, Struct1) {
 	Variable X("X");
 	Variable Y("Y");
@@ -176,6 +177,6 @@ TEST (Variable, Struct2) {
 	X.match(teddy);
 	ASSERT_EQ("Y",Y.symbol());
 	ASSERT_EQ("s(X)",Y.value());
-}
+}*/
 
 #endif
