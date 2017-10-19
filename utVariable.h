@@ -98,7 +98,7 @@ TEST (Variable, num1_to_varY_and_varX_match_varY) {
 	ASSERT_EQ("1",Y.value());
 	ASSERT_EQ("1",Z.value());
 }*/
-
+/*
 // ?- X=Y, X=Z, Z=1
 // X=1, Y=1, Z=1
 TEST (Variable, num1_to_varZ_to_varX_and_varY_to_varX) {
@@ -111,7 +111,7 @@ TEST (Variable, num1_to_varZ_to_varX_and_varY_to_varX) {
 	ASSERT_EQ("1",Y.value());
 	ASSERT_EQ("1",Z.value());
 }
-
+*/
 /*
 //////////////////////////////////////////////////////////////////
 //Y=X,1=X;

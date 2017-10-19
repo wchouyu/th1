@@ -65,12 +65,18 @@ public:
 	if (a!=0 && _assignable ==false)
 	{
 		a--;
-		//std::cout << "forwarding\n";
+		
 		Number num(atof(_value.c_str()));
 		if (again[a]!=NULL)
+		{
+			std::cout << "forwarding\n";
 			again[a]->match(num);
+		}
 		if (again_ver2[a]!=NULL)
+		{
+			std::cout << "forwarding_ver2\n";
 			again_ver2[a]->match(num);
+		}
 	}
 	if (a==0)
 		again[a]=NULL;
