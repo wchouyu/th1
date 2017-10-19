@@ -59,7 +59,10 @@ public:
 				return true;
 			}
 		}
-		
+			//////////////
+	if (input.class_number()!=2)
+			return ret;
+	/////////////
     }
 	else 
 	{
@@ -71,10 +74,7 @@ public:
   		if (_value==input.value())
   			ret=true;
 	}
-	//////////////
-	if (input.class_number()!=2)
-			return ret;
-	/////////////
+
 
 	if (a!=0 && _assignable ==false)
 	{
