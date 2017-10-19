@@ -16,7 +16,7 @@ using std::string;
 //class Atom;
 
 int a=0;
-Term *again[3]={NULL};
+Term *again[5]={NULL};
 class Variable : public Term{
 public:
   Variable(string s):_symbol(s),_value(s){}
@@ -31,8 +31,9 @@ public:
   
   bool match( Term  &input)
   {
+	std::cout << "1,";
 	bool ret = _assignable;
-	
+	std::cout << "2,";
     if(_assignable)
 	{
 		_value=input.value();
@@ -55,12 +56,7 @@ public:
   		if (_value==input.value())
   			ret=true;
 	}
-
-	//forwarding
-
-	//std::cout <<".h:" <<input.forward <<"\n";
-	
-	//std::cout <<"in match\n";
+	std::cout << "3,";
 
 	if (a!=0 && _assignable ==false)
 	{
@@ -72,13 +68,20 @@ public:
 			std::cout << "forwarding\n";
 			again[a]->match(num);
 		}
+	}
+	std::cout << "4,";
+	if (a!=0 && _assignable ==false)
+	{
+		a--;
+		Number num(atof(_value.c_str()));
 		if (again_ver2[a]!=NULL)
 		{
 			std::cout << "forwarding_ver2\n";
 			again_ver2[a]->match(num);
 		}
-		
 	}
+	std::cout << "5,";
+	
 	/*if (a==0)
 		again[a]=NULL;*/
 
@@ -93,7 +96,7 @@ private:
 	string const _symbol;
 	string _value;
 	bool _assignable = true;
-	Term *again_ver2[3]={NULL};
+	Term *again_ver2[5]={NULL};
 	
 };
 
