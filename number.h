@@ -34,7 +34,7 @@ public:
 		else
 			return input.match(*this);
 	}
-
+	
 	
 private:
 	
