@@ -66,10 +66,11 @@ public:
 		else if (input.class_number()==4)	
 		{
 				_assignable = true;
-				//str_var[0]=&input;
-				//b++;
-				//again[a]=this;
-				a++;
+				str_var[0]=&input;
+				b++;
+
+				again[a]=this;
+				//a++;
 		}
 
     }
@@ -85,22 +86,23 @@ public:
 
 		}
 	}
-
+	if (b==4 &&_assignable==false)
+		{
+			b=3;
+			Atom at2(str_var[0]->value());
+			if (str_var!=NULL)
+				if (again[a]!=NULL)
+					again[a]->match(at2);
+			std::cout <<str_var[0]->value() <<"\n";
+			std::cout <<at2.value() <<"\n";
+			return ret;
+	}
 	/////////
 	if (a!=0 && _assignable ==false)
 	{
 		a--;
 		
-		/*if (b==4 &&_assignable==false)
-		{
-			b=3;
-			Atom at2(str_var->value());
-			if (str_var!=NULL)
-				if (again[a]!=NULL)
-					again[a]->match(at2);
-			std::cout <<str_var->value() <<"\n";
-			std::cout <<at2.value() <<"\n";
-			return ret;
+		/*
 		}*/
 		Atom at(_value);
 		//std::cout << "before if again_ver2 again input: " << num.value() <<"\n";
