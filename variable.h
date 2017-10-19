@@ -65,11 +65,7 @@ public:
 		}
 		else if (input.class_number()==4)	
 		{
-				_assignable = true;
-				//str_var[0]=&input;
-				b++;
-				//again[a]=this;
-				a++;
+				
 		}
 
     }
