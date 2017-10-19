@@ -77,12 +77,19 @@ TEST (Variable, varX_match_varX_and_num1_to_varX) {
 // ?- Y=1, X=Y.
 // X=1
 TEST (Variable, num1_to_varY_and_varX_match_varY) {
+	std::cout << "ut1,";
 	Variable Y("Y");
+	std::cout << "ut1,";
 	Variable X("X");
+	std::cout << "ut1,";
 	Number num(1);
+	std::cout << "ut1,";
 	Y.match(num);
+	std::cout << "ut1,";
 	X.match(Y);
+	std::cout << "ut1,";
 	ASSERT_EQ("1",X.value());
+	std::cout << "ut1,";
 }
 
 
