@@ -5,6 +5,8 @@
 
 using std::string;
 
+
+
 class Term{
 
 public:
@@ -19,6 +21,9 @@ public:
   }
   virtual int class_number(){return -1;};
   bool assign(){};
+  //Term *forward;
+  
+  
 };
 
 class Atom : public Term{
