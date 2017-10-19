@@ -82,8 +82,11 @@ TEST (Variable, num1_to_varY_and_varX_match_varY) {
 	Number num(1);
 
 	Y.match(num);
+	
 	X.match(Y);
+	
 	ASSERT_EQ("1",X.value());
+	
 	
 }
 
@@ -92,7 +95,7 @@ TEST (Variable, num1_to_varY_and_varX_match_varY) {
 // X=1, Y=1, Z=1
 TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 	
-	a=0;
+	
 	Variable Y("Y");
 	Variable X("X");
 	Variable Z("Z");
