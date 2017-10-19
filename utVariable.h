@@ -45,8 +45,8 @@ TEST (Variable, varY_to_varX_and_num1_to_varX) {
 
 	X.match(Y);
 	X.match(num);
-	
 	ASSERT_EQ("1",Y.value());
+
 }
 
 // ?- X=Y, Y=1.
@@ -58,7 +58,6 @@ TEST (Variable, varY_to_varX_and_num1_to_varY) {
 
 	X.match(Y);
 	Y.match(num);
-	
 	ASSERT_EQ("1",X.value());
 }
 
@@ -77,12 +76,16 @@ TEST (Variable, varX_match_varX_and_num1_to_varX) {
 // ?- Y=1, X=Y.
 // X=1
 TEST (Variable, num1_to_varY_and_varX_match_varY) {
+	int a=0;
 	Variable Y("Y");
 	Variable X("X");
 	Number num(1);
 
 	Y.match(num);
+	//std::cout<<Y.symbol();
 	X.match(Y);
+	//std::cout<<Y.symbol();
+	//std::cout << "ut last a:" << a <<"\n";
 	ASSERT_EQ("1",X.value());
 	
 }
@@ -92,7 +95,7 @@ TEST (Variable, num1_to_varY_and_varX_match_varY) {
 // X=1, Y=1, Z=1
 TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 	
-	a=0;
+	
 	Variable Y("Y");
 	Variable X("X");
 	Variable Z("Z");
@@ -115,7 +118,7 @@ TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 // ?- X=Y, X=Z, Z=1
 // X=1, Y=1, Z=1
 TEST (Variable, num1_to_varZ_to_varX_and_varY_to_varX) {
-	/*Variable Y("Y");
+	Variable Y("Y");
 	Variable X("X");
 	Variable Z("Z");
 	Number num(1);
@@ -125,7 +128,7 @@ TEST (Variable, num1_to_varZ_to_varX_and_varY_to_varX) {
 	Z.match(num);
 	ASSERT_EQ("1",X.value());
 	ASSERT_EQ("1",Y.value());
-	ASSERT_EQ("1",Z.value());*/
+	ASSERT_EQ("1",Z.value());
 }
 
 

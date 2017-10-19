@@ -31,7 +31,8 @@ public:
   
   bool match( Term  &input)
   {
-	std::cout << "in match a:" << a <<"\n";
+	  //std::cout << "Y.assign" << input.assign() <<"\n";
+	//std::cout << "in match a:" << a <<"\n";
 	bool ret = _assignable;
 	
     if(_assignable)
@@ -53,7 +54,7 @@ public:
 				again[a]=this;
 				again_ver2[a]=&input;
 				a++;
-				
+				//std::cout << "in match a++:" << a <<"\n";
 			}
 			else
 			{
@@ -69,8 +70,10 @@ public:
 			input.match(num);
 		}
 
-  		if (_value==input.value())
+  		if (_value==input.value()){
   			ret=true;
+			
+		}
 	}
 
 	/////////
@@ -83,7 +86,7 @@ public:
 		{
 			//std::cout << "forwarding\n";
 			again[a]->match(num);
-			std::cout << "in forwarding	a:" << a << "again[a]:" << again[a] <<"\n";  
+			//std::cout << "in forwarding	a:" << a << "again[a]:" << again[a] <<"\n";  
 			//again[a]=NULL;
 			
 		}
