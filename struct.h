@@ -13,7 +13,8 @@ public:
   Struct(Atom const & name, std::vector<Term *> args):_name(name), _args(args) {
   }
 
-  //int class_number(){return 4;}
+  int class_number(){return 4;}
+
   Term * args(int index) {
     return _args[index];
   }
@@ -22,6 +23,7 @@ public:
     return _name;
   }
   string symbol() const{
+	
     string ret =_name.symbol() + "(";
     for(int i = 0; i < _args.size() - 1 ; i++){
       ret += _args[i]-> symbol() + ", ";
@@ -29,6 +31,19 @@ public:
     ret += _args[_args.size()-1]-> symbol() + ")";
     return  ret;
   }
+  string value() const
+  {
+
+	//std::cout <<  _name.symbol()  << " call value_function \n";
+	string ret =_name.symbol() + "(";
+    for(int i = 0; i < _args.size() - 1 ; i++){
+      ret += _args[i]-> value() + ", ";
+    }
+    ret += _args[_args.size()-1]-> value() + ")";
+	//std::cout << _args[_args.size()-1]-> value() << "\n";
+    return  ret;
+  }
+
   bool match(Term &term){
     Struct * ps = dynamic_cast<Struct *>(&term);
     if (ps){
