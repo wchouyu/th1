@@ -63,14 +63,14 @@ public:
 				return true;
 			}
 		}
-		else if (input.class_number()==4)	
+		/*else if (input.class_number()==4)	
 		{
 				_assignable = true;
 				//str_var[0]=&input;
 				b=4;
 				again[a]=this;
 				a++;
-		}
+		}*/
 
     }
 	else 
