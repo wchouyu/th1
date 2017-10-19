@@ -44,7 +44,9 @@ public:
 			_assignable = true;
 			return true;//1019_0318
 		}
-		if (input.class_number()==2)
+		if (input.class_number()!=2)
+			return ret;
+		else if (input.class_number()==2)
 		{
 			if (input.assign()){
 				_assignable = true;
