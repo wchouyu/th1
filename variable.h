@@ -17,6 +17,10 @@ using std::string;
 
 int a=0;
 Term *again[5]={NULL};
+
+int b=3;
+Term *str_var;
+
 class Variable : public Term{
 public:
   Variable(string s):_symbol(s),_value(s){}
@@ -31,11 +35,13 @@ public:
   
   bool match( Term  &input)
   {
+	
 	//std::cout << "in match a:" << a <<"\n";
 	bool ret = _assignable;
 	
     if(_assignable)
 	{
+		
 		_value=input.value();
 		_assignable = false;
 		//std::cout << "input:" <<input.symbol()<<"\t"<<input.value() << "\n";
@@ -43,18 +49,26 @@ public:
 		
 		if (_symbol==input.symbol()){
 			_assignable = true;
-			return true;//1019_0318
+			return true;
 		}
 
-		else if (input.class_number()==2)
+		else if (input.class_number()==2 || input.class_number()==4)
 		{
-			if (input.assign()){
+			
+			if (input.assign()||input.class_number()==4){
+				//std::cout << "struct\n" ;
 				_assignable = true;
 				again[a]=this;
 				again_ver2[a]=&input;
 				a++;
-				
+				if (input.class_number()==4)
+				{
+					_assignable = true;
+					str_var=&input;
+					b=4;
+				}
 			}
+
 			else
 			{
 				return true;
@@ -76,12 +90,23 @@ public:
 	}
 
 	/////////
+
 	if (a!=0 && _assignable ==false)
 	{
 		a--;
-		
-		
 		Atom at(_value);
+		if (b==4 &&_assignable==false)
+		{
+			b=3;
+			Atom at2(str_var->value());
+			if (str_var!=NULL)
+				if (again[a]!=NULL)
+					again[a]->match(at2);
+			//std::cout <<str_var->value() <<"\n";
+			//std::cout <<at2.value() <<"\n";
+			return ret;
+		}
+		
 		//std::cout << "before if again_ver2 again input: " << num.value() <<"\n";
 		if (again[a]!=NULL)
 		{
@@ -89,6 +114,7 @@ public:
 			again[a]->match(at);
 			//std::cout << "in forwarding	a:" << a << "again[a]:" << again[a] <<"\n";  
 			//again[a]=NULL;
+			
 			
 		}
 		if (again_ver2[a]!=NULL)
