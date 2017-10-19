@@ -65,7 +65,7 @@ public:
 	if (a!=0 && _assignable ==false)
 	{
 		a--;
-		std::cout << "forwarding\n";
+		//std::cout << "forwarding\n";
 		Number num(atof(_value.c_str()));
 		if (again[a]!=NULL)
 			again[a]->match(num);
