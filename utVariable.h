@@ -99,8 +99,10 @@ TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 	
 	Number num(1);
 	
-/*
-	X.match(Y);Y.match(Z);Z.match(num);
+
+	X.match(Y);
+	/*Y.match(Z);
+	Z.match(num);
 	ASSERT_EQ("1",X.value());
 	ASSERT_EQ("1",Y.value());
 	ASSERT_EQ("1",Z.value());*/
