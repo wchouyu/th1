@@ -77,9 +77,10 @@ public:
 			std::cout << "forwarding_ver2\n";
 			again_ver2[a]->match(num);
 		}
+		
 	}
-	if (a==0)
-		again[a]=NULL;
+	/*if (a==0)
+		again[a]=NULL;*/
 
     return ret;
   }
