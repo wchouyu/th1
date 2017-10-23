@@ -11,11 +11,12 @@ using namespace std;
 
 class Number : public Term{
 public:
-	Number (double value):_symbol(std::to_string(value)){
+	Number (double value){
 		std::stringstream ss;
 		ss << value;
 		//_symbol=ss.str();
 		_value=ss.str();
+		_symbol=ss.str();
 	}
 	
 
@@ -31,6 +32,8 @@ public:
 			return false;
 		else if (input.class_number()==1)
 			return input.value()==_value;
+		else if (input.class_number()==5)
+			return false;
 		else
 			return input.match(*this);
 	}
@@ -38,7 +41,7 @@ public:
 	
 private:
 	
-	string const _symbol;
+	string  _symbol;
 	string _value;
 
 	

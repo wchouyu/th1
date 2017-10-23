@@ -45,6 +45,8 @@ public:
   }
 
   bool match(Term &term){
+	  if (term.class_number()==5)
+		  return false;
     Struct * ps = dynamic_cast<Struct *>(&term);
     if (ps){
       if (!_name.match(ps->_name))

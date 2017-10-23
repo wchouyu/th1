@@ -18,10 +18,26 @@ using std::string;
 int a=0;
 Term *again[5]={NULL};
 int b=3;
+
+int again_delete_count=0;
+string again_delete[50]={};
+
 Term *str_var[5]={NULL};
+Term *list_var[5]={NULL};
 class Variable : public Term{
 public:
-  Variable(string s):_symbol(s),_value(s){}
+  Variable(string s):_symbol(s),_value(s){
+	  for (int i=0;i<again_delete_count;i++)
+	  {
+		  if (again_delete[i]==s)
+		  {
+			  a=0;b=3;again_delete_count=0;
+			  break;
+		  }
+	  }
+	  again_delete[again_delete_count]=s;
+	  again_delete_count++;
+  }
   
   string value()const{ return _value;}
   string symbol()const{return _symbol;}
@@ -33,24 +49,22 @@ public:
   
   bool match( Term  &input)
   {
-	//std::cout << "in match a:" << a <<"\n";
+	
 	bool ret = _assignable;
 	
     if(_assignable)
 	{
+
 		_value=input.value();
 		_assignable = false;
-		//std::cout << "input:" <<input.symbol()<<"\t"<<input.value() << "\n";
-		
 		
 		if (_symbol==input.symbol()){
 			_assignable = true;
 			return true;//1019_0318
 		}
-
 		else if (input.class_number()==2)
 		{
-
+			
 			if (input.assign()){
 				_assignable = true;
 				again[a]=this;
@@ -65,12 +79,34 @@ public:
 		}
 		else if (input.class_number()==4)	
 		{
-				_assignable = true;
+			
+				_assignable = true;//e
 				str_var[0]=&input;
 				b=4;
-
 				again[a]=this;
 				//a++;
+		}
+		else if (input.class_number()==5)
+		{
+			
+			ret=true;
+			string s_for_list=input.symbol();
+			if (s_for_list.find(_symbol,0)!=-1)
+				return false;
+			else if (s_for_list.find(_symbol,0)==-1){//no this variable in the list
+				ret=true;
+
+				
+				////////Y match L(containX),X match atom
+				_assignable=true;
+				list_var[0]=&input;
+				b=5;
+				again[a]=this;
+			}
+
+			
+
+			
 		}
 
     }
@@ -86,10 +122,24 @@ public:
 
 		}
 	}
+	
+
+
+	if (b==5&&_assignable==false)
+	{
+		
+		b=3;
+		Atom at2(list_var[0]->value());
+		if (list_var!=NULL)
+			if (again[a]!=NULL)
+				again[a]->match(at2);
+		return ret;
+	}
 	if (b==4 &&_assignable==false)
 	{
 			b=3;
 			Atom at2(str_var[0]->value());
+			
 			if (str_var!=NULL)
 				if (again[a]!=NULL)
 					again[a]->match(at2);
@@ -97,13 +147,10 @@ public:
 			//std::cout <<at2.value() <<"\n";
 			return ret;
 	}
-	/////////
+	
 	if (a!=0 && _assignable ==false)
 	{
 		a--;
-		
-		/*
-		}*/
 		Atom at(_value);
 		//std::cout << "before if again_ver2 again input: " << num.value() <<"\n";
 		if (again[a]!=NULL)
@@ -132,7 +179,7 @@ public:
     return ret;
   }
   
-  
+	  
 	
 	
 	

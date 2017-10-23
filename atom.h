@@ -40,7 +40,9 @@ public:
 			return input.value() == _symbol;
 		else if (input.class_number()==1)
 			return false;
-		else
+		else if (input.class_number()==5)
+			return false;
+		else 
 			return input.match(*this);
 	}
 

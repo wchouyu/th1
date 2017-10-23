@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "utVariable.h"
 #include "utStruct.h"
-
+#include "utList.h"
 int main( int argc , char **argv )
 {
     testing :: InitGoogleTest( &argc , argv ) ;

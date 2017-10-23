@@ -1,13 +1,13 @@
-all: hw3
+all: hw4
 
-hw3: main.o 
+hw4: main.o 
 ifeq (${OS}, Windows_NT)
-	g++ -o hw3 main.o -lgtest
+	g++ -o hw4 main.o -lgtest
 else
-	g++ -o hw3 main.o -lgtest -pthread
+	g++ -o hw4 main.o -lgtest -pthread
 endif
 
-main.o: main.cpp atom.h variable.h number.h struct.h utVariable.h utStruct.h
+main.o: main.cpp atom.h variable.h number.h struct.h list.h utList.h utVariable.h utStruct.h
 	g++ --std=gnu++0x -c main.cpp
 
 
