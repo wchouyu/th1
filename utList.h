@@ -94,8 +94,8 @@ TEST(List, matchToVarOccuredInListShouldFail) {
 	Variable X("X");
 	Number num(496);Atom terence_tao("terence_tao");
 	vector<Term*>v={&num,&X,&terence_tao};
-	List l(v);
-	ASSERT_FALSE(X.match(l));
+	List l(v);X.match(l);
+	ASSERT_EQ("X",X.value());
 }
 
 // ?- [496, X, terence_tao] = [496, X, terence_tao].
@@ -128,7 +128,8 @@ TEST(List, matchToVarToAtominListShouldSucceed) {
 	vector<Term*>v1={&num496,&X,&terence_tao};
 	vector<Term*>v2={&num496,&num8128,&terence_tao};
 	List l1(v1);List l2(v2);
-	l1.match(l2);
+	//l1.match(l2);
+	ASSERT_TRUE(l1.match(l2));
 	ASSERT_EQ("8128",X.value());
 }
 
