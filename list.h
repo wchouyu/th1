@@ -86,6 +86,13 @@ public:
 						_elements[i]->match(list_buf_atom);
 						ret_value=true;
 					}
+				if (l._elements[i]->class_number()==2)//num or atom in list match var
+					if (_elements[i]->class_number()==1||_elements[i]->class_number()==0)
+					{
+						Atom list_buf_atom(_elements[i]->value());
+						ret_value=l._elements[i]->match(list_buf_atom);
+						
+					}
 			}
 			return ret_value;
 	  }

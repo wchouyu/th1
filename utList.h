@@ -130,6 +130,7 @@ TEST(List, matchToVarToAtominListShouldSucceed) {
 	List l1(v1);List l2(v2);
 	//l1.match(l2);
 	ASSERT_TRUE(l1.match(l2));
+	ASSERT_TRUE(l2.match(l1));
 	ASSERT_EQ("8128",X.value());
 }
 
