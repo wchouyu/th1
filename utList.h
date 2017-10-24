@@ -200,6 +200,19 @@ TEST(List, headAndTailMatching4) {
 // When client still want to get the head of list
 // Then it should throw a string: "Accessing head in an empty list" as an exception.
 TEST (List, emptyExecptionOfHead) {
+	vector<Term *> args = {};
+	List l(args);
+	try{
+		l.head();
+		FAIL() << "Accessing head in an empty list";
+	}
+	catch(std::out_of_range const & err){
+		EXPECT_EQ(err.what(),std::string("Accessing head in an empty list"));
+	}
+	catch(...){
+		FAIL() << "Accessing head in an empty list";
+	}
+	
 
 }
 
