@@ -201,6 +201,12 @@ TEST(List, headAndTailMatching4) {
 // Then it should throw a string: "Accessing head in an empty list" as an exception.
 TEST (List, emptyExecptionOfHead) {
 	
+	List l;
+	//l.head()->value();
+	ASSERT_EQ("Accessing head in an empty list",l.head()->value());
+	
+	
+	
 
 }
 

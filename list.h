@@ -43,8 +43,15 @@ public:
   List (vector<Term *> const & elements):_elements(elements){}
   Term * head() const
   {
+	  
 	  if (_elements.size()>=1)
 		  return _elements[0];
+	  else
+	  {
+		  Atom *err=new Atom("Accessing head in an empty list");
+		  return err;
+	  }
+		   
   }
   List  *tail() const
   {
