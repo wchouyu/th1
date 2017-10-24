@@ -44,7 +44,7 @@ public:
   Term * head() const
   {
 	  if (_elements.size()==0){
-		  throw std::out_of_range("Accessing head in an empty list");
+		  throw "Accessing head in an empty list";
 		  //Term* reture_null=NULL;
 		  //return reture_null;
 	  }
