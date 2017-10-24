@@ -43,12 +43,7 @@ public:
   List (vector<Term *> const & elements):_elements(elements){}
   Term * head() const
   {
-	 if (_elements.size()==0){
-		  //throw 0;
-		  //Term* reture_null=NULL;
-		  //return reture_null;
-		
-	  }
+
 	  if (_elements.size()>=1)
 		  return _elements[0];
   }
