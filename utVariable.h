@@ -140,13 +140,6 @@ Variable.varY_to_varX_and_varW_to_varZ_and_varZ_to_varY_and_num1_to_varY
 Variable.Struct2
 */
 ////////////////////////////////////////////////////////////////
-TEST(Variable ,varY_to_varX_and_varW_to_varZ_and_varZ_to_varY_and_num1_to_varY)
-{
-	Variable X("X");Variable Y("Y");Variable Z("Z");Variable W("W");Number num(1);
-	X.match(Y);Z.match(W);Z.match(Y);Y.match(num);
-	EXPECT_EQ("1",W.value());
-
-}
 
 // Give there is a Struct s contains Variable X
 // And another Variable Y
