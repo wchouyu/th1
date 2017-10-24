@@ -46,7 +46,7 @@ public:
 	  if (_elements.size()>=1)
 		  return _elements[0];
   }
-  List * tail() const
+  List  *tail() const
   {
 	  if(_elements.size()>=1)
 	  {
@@ -54,8 +54,10 @@ public:
 		  for (int i=1;i<_elements.size();i++)
 			  v.push_back(_elements[i]);
 		  List return_list_buf(v);
-		  List *return_list;
-		  //return return_list;
+		  
+		  List *return_list=new List(return_list_buf);
+		  
+		  return return_list;
 	  }
   }
   bool match(List l)
@@ -81,8 +83,15 @@ public:
 				if (_elements[i]->class_number()==2)//var in list match num or atom
 					if (l._elements[i]->class_number()==1||l._elements[i]->class_number()==0){
 						Atom list_buf_atom(l._elements[i]->value());
-						
 						_elements[i]->match(list_buf_atom);
+						ret_value=true;
+					}
+				if (l._elements[i]->class_number()==2)//num or atom in list match var
+					if (_elements[i]->class_number()==1||_elements[i]->class_number()==0)
+					{
+						Atom list_buf_atom(_elements[i]->value());
+						ret_value=l._elements[i]->match(list_buf_atom);
+						
 					}
 			}
 			return ret_value;

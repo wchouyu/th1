@@ -15,8 +15,9 @@ using std::string;
 //class Number;
 //class Atom;
 
-int a=0;
+int a=0;int a_ver2=0;
 Term *again[5]={NULL};
+Term *again_ver2[5]={NULL};
 int b=3;
 
 int again_delete_count=0;
@@ -31,7 +32,7 @@ public:
 	  {
 		  if (again_delete[i]==s)
 		  {
-			  a=0;b=3;again_delete_count=0;
+			  a=0;b=3;a_ver2=0;again_delete_count=0;
 			  break;
 		  }
 	  }
@@ -68,8 +69,8 @@ public:
 			if (input.assign()){
 				_assignable = true;
 				again[a]=this;
-				again_ver2[a]=&input;
-				a++;
+				again_ver2[a_ver2]=&input;
+				a++;a_ver2++;
 				
 			}
 			else
@@ -91,8 +92,11 @@ public:
 			
 			ret=true;
 			string s_for_list=input.symbol();
-			if (s_for_list.find(_symbol,0)!=-1)
-				return false;
+			if (s_for_list.find(_symbol,0)!=-1){
+				_assignable=true;
+				_value=_symbol;
+				return false;//Don't care
+			}
 			else if (s_for_list.find(_symbol,0)==-1){//no this variable in the list
 				ret=true;
 
@@ -161,11 +165,12 @@ public:
 			//again[a]=NULL;
 			
 		}
-		if (again_ver2[a]!=NULL)
+		a_ver2--;
+		if (again_ver2[a_ver2]!=NULL)
 		{
 			//std::cout << "forwarding_ver2\n";
 			//std::cout << "before again_ver2 again input: " << num.value() <<"\n";
-			again_ver2[a]->match(at);
+			again_ver2[a_ver2]->match(at);
 			//std::cout << "again_ver2 again input: " << num.value() << "\n";
 			//again_ver2[a]=NULL;
 		}
@@ -187,7 +192,7 @@ private:
 	string const _symbol;
 	string _value;
 	bool _assignable = true;
-	Term *again_ver2[5]={NULL};
+	
 	
 };
 
