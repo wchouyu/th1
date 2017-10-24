@@ -44,7 +44,7 @@ public:
   Term * head() const
   {
 	 if (_elements.size()==0){
-		  throw 0;
+		  //throw 0;
 		  //Term* reture_null=NULL;
 		  //return reture_null;
 		
