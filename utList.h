@@ -205,8 +205,8 @@ TEST (List, emptyExecptionOfHead) {
 	try{
 		l.head();
 	}
-	catch(std::out_of_range const &err){
-		EXPECT_EQ("Accessing head in an empty list",err.what());
+	catch(std::out_of_range const & err){
+		EXPECT_EQ(std::string("Accessing head in an empty list"),err.what());
 	}
 	//EXPECT_TRUE(0);
 	//EXPECT_TRUE();
