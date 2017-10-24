@@ -50,7 +50,7 @@ public:
 	  {
 		  Atom *err=new Atom("Accessing head in an empty list");
 		  throw std::out_of_range("Accessing head in an empty list");
-		  return err;
+		  //return err;
 	  }
 		   
   }
@@ -65,7 +65,7 @@ public:
 		  
 		  List *return_list=new List(return_list_buf);
 		  
-		  return return_list;
+		  //return return_list;
 	  }
 	  else
 	  {
