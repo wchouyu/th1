@@ -49,8 +49,8 @@ public:
 	  else
 	  {
 		  Atom *err=new Atom("Accessing head in an empty list");
-		  //throw std::out_of_range(err->value());
-		  throw err;
+		  throw std::out_of_range(err->value());
+		  //throw err;
 	  }
 		   
   }
