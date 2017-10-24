@@ -49,8 +49,8 @@ public:
 	  else
 	  {
 		  Atom *err=new Atom("Accessing head in an empty list");
-		  throw std::out_of_range("Accessing head in an empty list");
-		  //return err;
+		  //throw std::out_of_range("Accessing head in an empty list");
+		  return err;
 	  }
 		   
   }
@@ -75,8 +75,8 @@ public:
 		   vector<Term*>v{err};
 		   List return_list_buf(v);
 		   List *return_list=new List(return_list_buf);
-		   throw std::out_of_range("Accessing tail in an empty list");
-		   //return return_list;
+		   //throw std::out_of_range("Accessing tail in an empty list");
+		   return return_list;
 	  }
   }
   bool match(List l)
