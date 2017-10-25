@@ -48,10 +48,7 @@ public:
 		  return _elements[0];
 	  else
 	  {
-		  Atom *err=new Atom("Accessing head in an empty list");
-		  try{this->head();}
-		  catch(std::out_of_range const & acc){
-			  throw std::out_of_range("Acceddddddddddddddddddssing head in an empty list");}
+		throw std::string("Accessing head in an empty list");
 	  }
 		   
   }
