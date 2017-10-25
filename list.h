@@ -49,9 +49,9 @@ public:
 	  else
 	  {
 		  Atom *err=new Atom("Accessing head in an empty list");
-		  try{this->tail();}
+		  try{this->head();}
 		  catch(std::out_of_range const & acc){
-			  throw std::out_of_range("Accessing head in an empty list");}
+			  throw std::out_of_range("Acceddddddddddddddddddssing head in an empty list");}
 	  }
 		   
   }
