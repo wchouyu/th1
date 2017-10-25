@@ -73,7 +73,7 @@ public:
 		   //vector<Term*>v{err};
 		   //List return_list_buf(v);
 		   //List *return_list=new List(return_list_buf);
-		   throw "Accessing tail in an empty list";
+		   throw std::string("Accessing tail in an empty list");
 		   //return return_list;
 	  }
   }
