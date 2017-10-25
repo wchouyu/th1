@@ -221,7 +221,9 @@ TEST (List, emptyExecptionOfTail) {
 		l.tail();}
 	catch(std::out_of_range const &err){
 		EXPECT_EQ(std::string("Accessing tail in an empty list"),err.what());
+		throw std::string("Accessing tail in an empty list");
 	}
+	
 }
 
 
