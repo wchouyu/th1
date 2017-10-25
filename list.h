@@ -51,6 +51,7 @@ public:
 		  Atom *err=new Atom("Accessing head in an empty list");
 		  throw std::out_of_range("Accessing head in an empty list");
 		  return err;*/
+		  
 	  }
 		   
   }
