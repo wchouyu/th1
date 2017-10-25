@@ -56,6 +56,7 @@ public:
   }
   List  *tail() const
   {
+	  
 	  if(_elements.size()>=1)
 	  {
 		  vector<Term*>v{};
