@@ -6,6 +6,7 @@
 #include <vector>
 using std::vector;
 
+
 class List : public Term {
 public:
 	string symbol() const
