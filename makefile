@@ -1,10 +1,10 @@
-all: hw4
+all: hw5
 
 hw4: main.o 
 ifeq (${OS}, Windows_NT)
-	g++ -o hw4 main.o -lgtest
+	g++ -o hw5 main.o -lgtest
 else
-	g++ -o hw4 main.o -lgtest -pthread
+	g++ -o hw5 main.o -lgtest -pthread
 endif
 
 main.o: main.cpp atom.h variable.h number.h struct.h list.h utList.h utVariable.h utStruct.h
