@@ -1,6 +1,6 @@
 all: hw5
 
-hw4: main.o 
+hw5: main.o 
 ifeq (${OS}, Windows_NT)
 	g++ -o hw5 main.o -lgtest
 else
