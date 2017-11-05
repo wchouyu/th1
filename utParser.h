@@ -238,10 +238,7 @@ TEST_F(ParserTest, parseStructOfStructAllTheWay2) {
 TEST_F(ParserTest, parseStructNoArg) {
 	Scanner scanner("point()");
 	Parser parser(scanner);
-	
-	//std::cout << "scanner buf: " << scanner.return_buffer() << "\n";
-	//std::cout << parser.createTerm();
-	//ASSERT_EQ("point()",parser.createTerm()->symbol());
+	ASSERT_EQ("point()",parser.createTerm()->symbol());
 
 	
 
@@ -277,7 +274,9 @@ TEST_F(ParserTest, parseStructTwoArgs) {
 // Then it should return a Struct.
 // And #symbol() of Strcut should return "...(11, 12)".
 TEST_F(ParserTest, parseStructDOTSTwoArgs) {
-	
+	Scanner scanner("...(11, 12)");
+	Parser parser(scanner);
+	ASSERT_EQ("...(11, 12)",parser.createTerm()->symbol());
 }
 
 

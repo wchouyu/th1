@@ -16,46 +16,50 @@ public:
 	  
   }
   Term* createTerm(){
+	
     int token = _scanner.nextToken();
 	
     if(token == VAR){
       return new Variable(symtable[_scanner.tokenValue()].first);
     }else if(token == NUMBER){
       return new Number(_scanner.tokenValue());
-    }else if(token == ATOM){
+    }else if(token == ATOM || token == ATOMSC){
         Atom* atom = new Atom(symtable[_scanner.tokenValue()].first);
-		//std::cout << "atom: "<< atom->symbol() << "\n";
+		std::cout << "atom: "<< atom->symbol() << "\n";
+
+		if (atom->symbol()=="[")
+		{
+			if (_scanner.currentChar()!=']' && _scanner.currentChar()!=' ' && _scanner.currentChar()!='\t'){
+				vector<Term*> terms = getArgs();
+				if(_currentToken == ']')
+					return new List(terms);
+			}
+			else
+			{
+				_scanner.skipLeadingWhiteSpace();
+				vector<Term*> terms= getArgs();
+				return new List(terms);
+			}
+
+		}
+
         if(_scanner.currentChar() == '(' ) {
           _scanner.nextToken() ;
-		  
           vector<Term*> terms = getArgs();
-		  
-          if(_currentToken == ')'){
-			  return new Struct(*atom, terms);}
-		 
-		 
+		  if (terms.size()==0){return new Struct(*atom, terms);}//>
+          if(_currentToken == ')')
+			  return new Struct(*atom, terms); 
         }
         else
           return atom;
     }
-	else if (token== ATOMSC)
-	{
-		//case1 has term in list
-		//std::cout << "current " << _scanner.currentChar() << "\n";
-		if (_scanner.currentChar()!=']' && _scanner.currentChar()!=' ' && _scanner.currentChar()!='\t'){
-			vector<Term*> terms = getArgs();
-			if(_currentToken == ']')
-				return new List(terms);
-		}
-		else
-		{
-			_scanner.skipLeadingWhiteSpace();
-			vector<Term*> terms= getArgs();
-			
-			return new List(terms);
-		}
-		
-	}
+
+	
+    //List
+	
+	
+
+	
 	
     return nullptr;
   }

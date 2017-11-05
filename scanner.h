@@ -28,7 +28,7 @@ public:
         string s = extractAtomSC();
         processToken<ATOMSC>(s);
         return ATOMSC;
-      } else if (isupper(currentChar()) || currentChar() == '_') {
+      } else if (isupper(currentChar()) || currentChar() == '_' ) {
         string s = extractVar();
         processToken<VAR>(s);
         return VAR;
