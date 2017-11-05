@@ -4,62 +4,72 @@
 #include "atom.h"
 #include <vector>
 #include <string>
+#include <typeinfo>
+#include <iostream>
 
 using std::string;
 
-class Struct:public Term
-{
+class Struct: public Term {
 public:
-  Struct(Atom const & name, std::vector<Term *> args):_name(name), _args(args) {
+  Struct(Atom name, std::vector<Term *> args): _name(name) {
+    _args = args;
   }
-
-  int class_number(){return 4;}
 
   Term * args(int index) {
     return _args[index];
   }
 
-  Atom const & name() {
+  Atom & name() {
     return _name;
   }
-  string symbol() const{
-	
-    string ret =_name.symbol() + "(";
-    for(int i = 0; i < _args.size() - 1 ; i++){
-      ret += _args[i]-> symbol() + ", ";
-    }
-    ret += _args[_args.size()-1]-> symbol() + ")";
-    return  ret;
+  string symbol() const {
+	  
+    string ret = _name.symbol() + "(";
+	if (_args.size()==0){
+		ret=_name.symbol()+"()";
+		return ret;
+	}
+    std::vector<Term *>::const_iterator it = _args.begin();
+    for (; it != _args.end()-1; ++it)
+      ret += (*it)->symbol()+", ";
+    ret  += (*it)->symbol()+")";
+    return ret;
   }
-  string value() const
+  string value() const {
+    string ret = _name.symbol() + "(";
+	if (_args.size()==0)
+	{
+		ret=_name.symbol()+"()";
+		return ret;
+	}
+    std::vector<Term *>::const_iterator it = _args.begin();
+    for (; it != _args.end()-1; ++it)
+      ret += (*it)->value()+", ";
+    ret  += (*it)->value()+")";
+    return ret;
+  }
+  bool match(Term &term)
   {
-
-	//std::cout <<  _name.symbol()  << " call value_function \n";
-	string ret =_name.symbol() + "(";
-    for(int i = 0; i < _args.size() - 1 ; i++){
-      ret += _args[i]-> value() + ", ";
-    }
-    ret += _args[_args.size()-1]-> value() + ")";
-	//std::cout << _args[_args.size()-1]-> value() << "\n";
-    return  ret;
-  }
-
-  bool match(Term &term){
-	  if (term.class_number()==5)
+	  Struct * ps = dynamic_cast<Struct *>(&term);
+	  if (typeid(term)!=typeid(Struct))
 		  return false;
-    Struct * ps = dynamic_cast<Struct *>(&term);
-    if (ps){
-      if (!_name.match(ps->_name))
-        return false;
-      if(_args.size()!= ps->_args.size())
-        return false;
-      for(int i=0;i<_args.size();i++){
-        if(_args[i]->symbol() != ps->_args[i]->symbol())
-            return false;
-      }
+	  if (typeid(term)==typeid(Struct))
+	  {
+		  if (ps){
+			  if (!_name.match(ps->_name))
+				  return false;
+			  if(_args.size()!= ps->_args.size())
+				  return false;
+
+			  for(int i=0;i<_args.size();i++)
+			  {
+				  if (! ( ps->_args[i]->match(*_args[i]) ) )
+						  return false;
+			  }
+			 
+		  }
       return true;
-    }
-    return false;
+	  }
   }
 private:
   Atom _name;

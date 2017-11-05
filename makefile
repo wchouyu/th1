@@ -1,26 +1,32 @@
-all: hw5
+all: utAtom utVariable utScanner
 
-hw5: main.o 
-ifeq (${OS}, Windows_NT)
-	g++ -o hw5 main.o -lgtest
-else
-	g++ -o hw5 main.o -lgtest -pthread
-endif
+#madRace: mainMadRace.o
+#	g++ -o madRace mainMadRace.o -lgtest -lpthread
+#mainMadRace.o: mainMadRace.cpp madRace.h utMadRace.h
+#	g++ -std=c++11 -c mainMadRace.cpp
 
-main.o: main.cpp atom.h variable.h number.h struct.h list.h utList.h utVariable.h utStruct.h
-	g++ --std=gnu++0x -c main.cpp
+utAtom: mainAtom.o atom.o
+	g++ -o utAtom mainAtom.o atom.o -lgtest -lpthread
+mainAtom.o: mainAtom.cpp utAtom.h atom.h utStruct.h struct.h utList.h list.h list.cpp
+	g++ -std=c++11 -c mainAtom.cpp
 
+atom.o: atom.cpp atom.h variable.h
+	g++ -std=c++11 -c atom.cpp
 
+utVariable: mainVariable.o atom.o
+		g++ -o utVariable mainVariable.o atom.o -lgtest -lpthread
+mainVariable.o: mainVariable.cpp utVariable.h variable.h
+		g++ -std=c++11 -c mainVariable.cpp
 
 #exp: mainExp.o
 #	g++ -o exp mainExp.o -lgtest -lpthread
 #mainExp.o: mainExp.cpp exp.h global.h
 #	g++ -std=c++11 -c mainExp.cpp
 
-#utScannerParser: mainScannerParser.o term.o struct.o var.o list.o
-#	g++ -o utScannerParser mainScannerParser.o term.o var.o struct.o list.o -lgtest -lpthread
-#mainScannerParser.o: mainScannerParser.cpp utScanner.h utParser.h scanner.h parser.h term.h var.h struct.h list.h global.h node.h
-#		g++ -std=c++11 -c mainScannerParser.cpp
+utScanner: mainScanner.o atom.o scanner.h utScanner.h utParser.h parser.h
+	g++ -o utScanner mainScanner.o atom.o -lgtest -lpthread
+mainScanner.o: mainScanner.cpp utScanner.h scanner.h  atom.h struct.h variable.h  utParser.h parser.h
+		g++ -std=c++11 -c mainScanner.cpp
 
 #utTerm: mainTerm.o term.o struct.o var.o list.o
 #	g++ -o utTerm mainTerm.o term.o var.o struct.o list.o -lgtest -lpthread
@@ -34,9 +40,7 @@ main.o: main.cpp atom.h variable.h number.h struct.h list.h utList.h utVariable.
 #g++ -std=c++11 -c var.cpp
 #list.o: list.h list.cpp term.h var.h
 #	g++ -std=c++11 -c list.cpp
-clean:	
-ifeq (${OS}, Windows_NT)
-	del *.o *.exe
-else
-	rm -f *.o hw1
-endif
+clean:
+	rm -f *.o  utAtom utVariable utScanner
+stat:
+	wc *.h *.cpp
