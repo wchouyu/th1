@@ -163,9 +163,9 @@ TEST_F(ParserTest, parseListOfLists) {
 // Then it should return a List.
 // And #symbol() of List should return "[[1], [], s(s(1))]".
 TEST_F(ParserTest, parseListOfListsAndStruct) {
-	//Scanner scanner("   [  [1], [], s(s(1)) ]   ");
-	//Parser parser(scanner);
-	//ASSERT_EQ("[[1], [], s(s(1))]",parser.createTerm()->symbol());
+	Scanner scanner("   [  [1], [], s(s(1)) ]   ");
+	Parser parser(scanner);
+	ASSERT_EQ("[[1], [], s(s(1))]",parser.createTerm()->symbol());
 }
 
 // Given there is string: "   [1, 2]" in scanner.
@@ -202,7 +202,13 @@ TEST_F(ParserTest, illegal1) {
 // And #symbol() of Struct should return ".(1, [])".
 // And the first term should be number: "1", the second term should be another List: "[]".
 TEST_F(ParserTest, ListAsStruct) {
+	Scanner scanner(".(1,[])");
+	Parser parser(scanner);
 	
+	
+	//ASSERT_EQ(".(1, [])",parser.createTerm());
+	ASSERT_EQ(".(1, [])",parser.createTerm()->symbol());
+	//ASSERT_EQ("1",parser.createTerm()
 }
 
 

@@ -8,7 +8,6 @@ using std::string;
 #include "global.h"
 #include "scanner.h"
 #include "struct.h"
-
 class Parser{
 public:
   Parser(Scanner scanner) : _scanner(scanner){
@@ -16,7 +15,8 @@ public:
 	  
   }
   Term* createTerm(){
-	
+	  std::cout << "current char: " << _scanner.currentChar() << "\n";
+	  //char cur = _scanner.currentChar();
     int token = _scanner.nextToken();
 	
     if(token == VAR){
@@ -25,19 +25,29 @@ public:
       return new Number(_scanner.tokenValue());
     }else if(token == ATOM || token == ATOMSC){
         Atom* atom = new Atom(symtable[_scanner.tokenValue()].first);
-		std::cout << "atom: "<< atom->symbol() << "\n";
+		//std::cout << "atom: "<< atom->symbol() << "\n";
 
 		if (atom->symbol()=="[")
 		{
+			
 			if (_scanner.currentChar()!=']' && _scanner.currentChar()!=' ' && _scanner.currentChar()!='\t'){
 				vector<Term*> terms = getArgs();
-				if(_currentToken == ']')
-					return new List(terms);
+				if(_currentToken == ']'){
+					return new List(terms);}
 			}
-			else
+			else 
 			{
+				if (_scanner.currentChar() == ']')	{
+					_currentToken=_scanner.nextToken();
+					return new List();
+				}
+
 				_scanner.skipLeadingWhiteSpace();
+				
+				
 				vector<Term*> terms= getArgs();
+				//List l(terms);std::cout << l.symbol() << "\n";
+				
 				return new List(terms);
 			}
 
@@ -55,7 +65,6 @@ public:
     }
 
 	
-    //List
 	
 	
 
@@ -70,9 +79,11 @@ public:
     vector<Term*> args;
     if(term)
       args.push_back(term);
+	
     while((_currentToken = _scanner.nextToken()) == ',') {
       args.push_back(createTerm());
     }
+	
     return args;
   }
 
@@ -81,5 +92,6 @@ public:
 private:
   Scanner _scanner;
   int _currentToken;
+  
 };
 #endif
