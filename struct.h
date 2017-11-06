@@ -71,6 +71,8 @@ public:
       return true;
 	  }
   }
+
+  int arity(){return _args.size();}
 private:
   Atom _name;
   std::vector<Term *> _args;

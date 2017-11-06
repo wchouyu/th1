@@ -15,7 +15,7 @@ public:
 	  
   }
   Term* createTerm(){
-	  std::cout << "current char: " << _scanner.currentChar() << "\n";
+	  //std::cout << "current char: " << _scanner.currentChar() << "\n";
 	  //char cur = _scanner.currentChar();
     int token = _scanner.nextToken();
 	

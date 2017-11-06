@@ -204,11 +204,14 @@ TEST_F(ParserTest, illegal1) {
 TEST_F(ParserTest, ListAsStruct) {
 	Scanner scanner(".(1,[])");
 	Parser parser(scanner);
+
+	vector<Term*>terms=parser.getArgs();
+	ASSERT_EQ(2,terms[0]->arity());
+	ASSERT_EQ(".(1, [])",terms[0]->symbol());
+	ASSERT_EQ("1",terms[0]->args(0)->symbol());
+	ASSERT_EQ("[]",terms[0]->args(1)->symbol());
 	
 	
-	//ASSERT_EQ(".(1, [])",parser.createTerm());
-	ASSERT_EQ(".(1, [])",parser.createTerm()->symbol());
-	//ASSERT_EQ("1",parser.createTerm()
 }
 
 
@@ -219,7 +222,14 @@ TEST_F(ParserTest, ListAsStruct) {
 // And #symbol() of Struct should return ".(2, .(1, []))"
 // And the first term should be number: "2", the second term should be another Strcut: ".(1, [])".
 TEST_F(ParserTest, ListAsStruct2) {
+	Scanner scanner(".(2,.(1,[]))");
+	Parser parser(scanner);
 
+	vector<Term*>terms=parser.getArgs();
+	ASSERT_EQ(2,terms[0]->arity());
+	ASSERT_EQ(".(2, .(1, []))",terms[0]->symbol());
+	ASSERT_EQ("2",terms[0]->args(0)->symbol());
+	ASSERT_EQ(".(1, [])",terms[0]->args(1)->symbol());
 }
 
 
