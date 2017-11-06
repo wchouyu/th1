@@ -1,9 +1,14 @@
-all: utAtom utVariable utScanner
+all: hw5 utAtom utVariable utScanner
 
 #madRace: mainMadRace.o
 #	g++ -o madRace mainMadRace.o -lgtest -lpthread
 #mainMadRace.o: mainMadRace.cpp madRace.h utMadRace.h
 #	g++ -std=c++11 -c mainMadRace.cpp
+
+hw5: mainScanner.o atom.o scanner.h utParser.h parser.h
+	g++ -o hw5 mainScanner.o atom.o -lgtest -lpthread
+mainParser.o: mainScanner.cpp utParser.h parser.h
+		g++ -std=c++11 -c mainScanner.cpp
 
 utAtom: mainAtom.o atom.o
 	g++ -o utAtom mainAtom.o atom.o -lgtest -lpthread
