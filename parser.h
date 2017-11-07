@@ -12,7 +12,6 @@ class Parser{
 public:
   Parser(Scanner scanner) : _scanner(scanner){
 	  _scanner.checkInput();
-	  
   }
   Term* createTerm(){
 	  //std::cout << "current char: " << _scanner.currentChar() << "\n";
