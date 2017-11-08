@@ -84,8 +84,8 @@ public:
   bool checkInput()
   {
 	  int input_val=0;std::string throw_string="unexpected token\n";
-	  if(buffer.find("(")==string::npos && buffer.find(")")!=string::npos)	throw throw_string;
-	  if(buffer.find("[")==string::npos && buffer.find("]")!=string::npos)	throw throw_string;
+	  //if(buffer.find("(")==string::npos && buffer.find(")")!=string::npos)	throw throw_string;
+	  //if(buffer.find("[")==string::npos && buffer.find("]")!=string::npos)	throw throw_string;
 	  return true;
 	  
   }
