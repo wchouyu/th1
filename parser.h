@@ -11,7 +11,12 @@ using std::string;
 class Parser{
 public:
   Parser(Scanner scanner) : _scanner(scanner){
-	  _scanner.checkInput();
+	  if(_scanner.buffer.find("(")==string::npos && _scanner.buffer.find(")")!=string::npos)	
+		  throw string("unexpected token");
+	  if(_scanner.buffer.find("[")==string::npos && _scanner.buffer.find("]")!=string::npos)
+		  throw string("unexpected token");
+	  
+	  
 	  
   }
   Term* createTerm(){

@@ -95,8 +95,9 @@ public:
 
   string return_buffer(){return buffer;}
   int return_pos(){return pos;};
-private:
   string buffer;
+private:
+  //string buffer;
   int pos;
   int _tokenValue;
 
