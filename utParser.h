@@ -190,7 +190,7 @@ TEST_F(ParserTest, illegal1) {
 		Parser parser(scanner);
 	}catch(std::string err){
 		check=true;
-		std::cout << err;
+		//std::cout << err;
 	}
 	if (!check)	ASSERT_TRUE(0);
 }
