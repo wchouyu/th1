@@ -19,8 +19,8 @@ public:
   virtual Term * args(int index){}
 protected:
 	Term ():_symbol(""){}
-  Term (string s):_symbol(s) {}
-  Term(double db){
+	Term (string s):_symbol(s) {}
+	Term(double db){
     std::ostringstream strs;
     strs << db;
     _symbol = strs.str();
@@ -33,11 +33,13 @@ protected:
 class Atom : public Term{
 public:
   Atom(string s):Term(s) {}
+   
 };
 
 class Number : public Term{
 public:
   Number(double db):Term(db) {}
+   
 };
 
 #endif

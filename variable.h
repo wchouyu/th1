@@ -6,6 +6,7 @@
 #include <typeinfo>
 #include "atom.h"
 #include "list.h"
+
 using std::string;
 
 class Variable : public Term {
@@ -46,6 +47,8 @@ public:
 		}
 		
 	}
+	
+
 	
 private:
   Term * _inst;

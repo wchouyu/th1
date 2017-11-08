@@ -2,7 +2,7 @@
 #define LIST_H
 
 #include "atom.h"
-#include "variable.h"
+
 #include <vector>
 #include <string>
 
@@ -73,6 +73,10 @@ public:
 			throw std::string("Accessing tail in an empty list");
 	}
 	bool match(List &l);
+
+	
+  
+   
 private:
   
   std::vector<Term *> _args;
