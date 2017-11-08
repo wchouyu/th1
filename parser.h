@@ -11,7 +11,7 @@ using std::string;
 class Parser{
 public:
   Parser(Scanner scanner) : _scanner(scanner){
-	  _scanner.checkInput();
+	  //_scanner.checkInput();
 	  
   }
   Term* createTerm(){
@@ -41,7 +41,8 @@ public:
 					_currentToken=_scanner.nextToken();
 					return new List();
 				}
-
+				else if (_scanner.currentChar() == ')')
+					throw string("unexpected token");
 				_scanner.skipLeadingWhiteSpace();
 				
 				

@@ -193,7 +193,7 @@ TEST_F(ParserTest, illegal1) {
 		ASSERT_EQ("unexpected token", err);
 		//std::cout << err;
 	}
-	if (!check)	ASSERT_TRUE(0);
+	//if (!check)	ASSERT_TRUE(0);
 }
 
 // Given there is string: ".(1,[])" in scanner.
