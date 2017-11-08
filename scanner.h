@@ -85,9 +85,9 @@ public:
   {
 	  
 	  if(buffer.find("(")==string::npos && buffer.find(")")!=string::npos)	
-		  throw std::string("unexpected token");
+		  throw string("unexpected token");
 	  if(buffer.find("[")==string::npos && buffer.find("]")!=string::npos)
-		  throw std::string("unexpected token");
+		  throw string("unexpected token");
 	  
 	  return true;
 	  
@@ -95,9 +95,9 @@ public:
 
   string return_buffer(){return buffer;}
   int return_pos(){return pos;};
-  string buffer;
+  
 private:
-  //string buffer;
+  string buffer;
   int pos;
   int _tokenValue;
 
