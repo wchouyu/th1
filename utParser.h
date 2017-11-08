@@ -186,14 +186,15 @@ TEST_F(ParserTest, parseList) {
 TEST_F(ParserTest, illegal1) {
 	Scanner scanner("[1,2)");
 	bool check=false;
+	Parser parser(scanner);
 	try{
-		Parser parser(scanner);
+		parser.createTerm();
 	}catch(std::string &err){
 		check=true;
 		ASSERT_EQ("unexpected token", err);
 		//std::cout << err;
 	}
-	//if (!check)	ASSERT_TRUE(0);
+	if (!check)	ASSERT_TRUE(0);
 }
 
 // Given there is string: ".(1,[])" in scanner.
