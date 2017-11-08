@@ -32,6 +32,8 @@ public:
 			
 			if (_scanner.currentChar()!=']' && _scanner.currentChar()!=' ' && _scanner.currentChar()!='\t'){
 				vector<Term*> terms = getArgs();
+				if (_currentToken == ')')
+					throw string("unexpected token");
 				if(_currentToken == ']'){
 					return new List(terms);}
 			}
