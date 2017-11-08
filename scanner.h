@@ -85,9 +85,10 @@ public:
   {
 	  
 	  if(buffer.find("(")==string::npos && buffer.find(")")!=string::npos)	
-		  throw std::string("unexpected token\n");
+		  throw string("unexpected token");
 	  if(buffer.find("[")==string::npos && buffer.find("]")!=string::npos)
-		  throw std::string("unexpected token\n");
+		  throw string("unexpected token");
+	  
 	  return true;
 	  
   }
