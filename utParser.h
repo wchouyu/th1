@@ -108,6 +108,7 @@ TEST_F(ParserTest, parseStructThreeArgs) {
 TEST_F(ParserTest, parseListEmpty) {
 	Scanner scanner("   [   ]");
 	Parser parser(scanner);
+	//parser.createTerm();
 	ASSERT_EQ("[]",parser.createTerm()->symbol());
 }
 

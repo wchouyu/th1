@@ -40,7 +40,7 @@ bool isSpecialCh(char c) {
          || c == '@'
          || c == '?'
          || c == ':'
-		 || c == '['
+		 
 		;
 }
 bool isList(char c){return c=='[';}

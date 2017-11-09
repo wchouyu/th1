@@ -15,10 +15,15 @@ public:
 	  
   }
   Term* createTerm(){
+	
 	  //std::cout << "current char: " << _scanner.currentChar() << "\n";
 	  //char cur = _scanner.currentChar();
+
+	 
     int token = _scanner.nextToken();
 	
+
+
     if(token == VAR){
       return new Variable(symtable[_scanner.tokenValue()].first);
     }else if(token == NUMBER){
@@ -66,6 +71,27 @@ public:
         else
           return atom;
     }
+	if (token =='[')
+	{
+		
+		if (_scanner.currentChar() == ' ' || _scanner.currentChar() == '\t') 
+			_scanner.skipLeadingWhiteSpace();
+		
+		if (_scanner.currentChar()==']'){	
+			_currentToken=_scanner.nextToken();
+			return new List();
+		}
+		
+		else{
+			vector<Term*> terms = getArgs();
+			if(_currentToken == ')')	
+				throw string("unexpected token");
+			if(_currentToken == ']'){
+				return new List(terms);} 
+		}
+	}
+	
+		
 	
 	
 	
