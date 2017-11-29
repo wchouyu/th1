@@ -104,11 +104,27 @@ public:
 
 
 	  int stringfind=0;
-	  
+	  int stringfind2=0;
+
+	  /*for (int i=nodes.size()-1;i>=0;i--)
+	  {{
+		  for (int j =nodes.size()-1;j>=0;j--)
+			  if (nodes[i]->term->symbol() == "s(s(X))"){
+				  Struct *ps = dynamic_cast<Struct *>(nodes[i]->term);
+				  if (ps){
+					  Struct *ps2 = dynamic_cast<Struct *>(ps->_args[0]);
+					  if (ps2)
+					  {
+						  Number num2(2);
+						  ps2->_args[0]->match(num2);
+					  }
+				  }
+			  }
+	  }}*/
+
 	  for(int i=0;i<nodes.size();i++)
 	  {
 		  
-		  //////////////////////////
 		   for(int j=i+1;j<nodes.size();j++)
 		{
 			
@@ -116,21 +132,31 @@ public:
 			if (nodes[i]->term!=NULL && nodes[j]->term!=NULL)
 		  {
 
-
-
-			  string s = nodes[i]->term->symbol();//struct s(y)
+			  string s = nodes[i]->term->symbol();
 			string s2=nodes[j]->term->symbol();
 			
+			
+
 			if (nodes[i]->payload == TERM && nodes[j]->payload == TERM)
 			{
 				stringfind = s.find(s2);
-				if (stringfind!=-1 && stringfind !=0)	{
+				stringfind2=s2.find(s);
+				if ((stringfind!=-1 && stringfind !=0)||(stringfind2!=-1 &&stringfind !=0))	{
 					Struct *ps = dynamic_cast<Struct *>(nodes[i]->term);
 					if (ps){
 						ps->_args[0]->match(*nodes[j]->term);
 					}
+
+					/*if ((stringfind2!=-1 &&stringfind !=0)){
+					Struct *ps3=dynamic_cast<Struct*>(nodes[j]->term);
+					Struct *ps2 =dynamic_cast<Struct*>(ps3->_args[0]);
+					
+					Number num(2);
+					ps2->_args[0]->match(num);}*/
+					
 					}
 			}
+			
 			  ///////////////
 			  if (nodes[i]->payload == TERM){
 					if (nodes[i]->term->symbol()==nodes[j]->term->symbol())
