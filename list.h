@@ -2,85 +2,30 @@
 #define LIST_H
 
 #include "atom.h"
-
 #include <vector>
 #include <string>
-
-using std::string;
+#include <typeinfo>
+#include <iostream>
 using std::vector;
 
+class Variable ;
 
-
-class List: public Term {
+class List : public Term {
 public:
-
-
+  string symbol() const ;
+  string value() const ;
+  bool match(Term & term) ;
+public:
+  List (): _elements(0) {}
+  List (vector<Term *> const & elements):_elements(elements){}
+  Term * head() const;
+  List * tail() const;
   Term * args(int index) {
-    return _args[index];
+    return _elements[index];
   }
-
-  
-  string symbol() const
-	{
-		if (_args.size()==0)	return "[]";
-		else
-		{
-			string ret="[";
-			for (int i=0;i<_args.size()-1;i++)
-				ret+=_args[i]->symbol()+", ";
-			ret+=_args[_args.size()-1]->symbol()+"]";
-			return ret;
-		}
-	}
-  string value() const
-	{
-		
-		if (_args.size()==0)	return "[]";
-		else
-		{
-			
-			string ret="[";
-			for (int i=0;i<_args.size()-1;i++)
-				ret+=_args[i]->value()+", ";
-			ret+=_args[_args.size()-1]->value()+"]";
-			return ret;
-		}
-	}
-
-  
-public:
-	List (): _args() {}
-	List (vector<Term *>const &elements):_args(elements){}
-	Term *head()const
-	{
-		if (_args.size() >=1)
-			return _args[0];
-		else
-			throw std::string("Accessing head in an empty list");
-	}
-	List *tail() const
-	{
-		if (_args.size()>=1)
-		{
-			vector<Term*>v{};
-			for (int i=1;i<_args.size();i++)
-				v.push_back(_args[i]);
-			List return_list_buf(v);
-			List *return_list=new List(return_list_buf);
-			return return_list;
-		}
-		else
-			throw std::string("Accessing tail in an empty list");
-	}
-	bool match(List &l);
-
-	
-  
-   
+  int arity() const {return _elements.size();}
 private:
-  
-  std::vector<Term *> _args;
-  
+  vector<Term *> _elements;
 };
 
 #endif

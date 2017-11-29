@@ -2,11 +2,8 @@
 #define VARIABLE_H
 
 #include <string>
-#include <iostream>
-#include <typeinfo>
 #include "atom.h"
-#include "list.h"
-
+#include <iostream>
 using std::string;
 
 class Variable : public Term {
@@ -25,31 +22,9 @@ public:
       _inst = &term ;
       return true;
     }
-	////
-	
-	////
     return _inst->match(term);
   }
-public:
 
-	bool match(List &l)
-	{
-		
-		if (l.symbol().find(symbol(),0) != -1)
-		{
-			//_inst= &l;//dangerous
-			return false;
-		}
-		else//no this variable in the list
-		{
-			_inst=&l;
-			return true;
-		}
-		
-	}
-	
-
-	
 private:
   Term * _inst;
 };

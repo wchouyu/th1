@@ -28,7 +28,7 @@ public:
         string s = extractAtomSC();
         processToken<ATOMSC>(s);
         return ATOMSC;
-      } else if (isupper(currentChar()) || currentChar() == '_' ) {
+      } else if (isupper(currentChar()) || currentChar() == '_') {
         string s = extractVar();
         processToken<VAR>(s);
         return VAR;
@@ -42,8 +42,7 @@ public:
 
   int skipLeadingWhiteSpace() {
     for (; (buffer[pos] == ' ' || buffer[pos] == '\t') && pos<buffer.length(); ++pos);
-    
-	return position();
+    return position();
   }
 
   int position() const {return pos;}
@@ -81,21 +80,6 @@ public:
     return buffer[pos++];
   }
 
-  bool checkInput()
-  {
-	  
-	  if(buffer.find("(")==string::npos && buffer.find(")")!=string::npos)	
-		  throw string("unexpected token");
-	  if(buffer.find("[")==string::npos && buffer.find("]")!=string::npos)
-		  throw string("unexpected token");
-	  
-	  return true;
-	  
-  }
-
-  string return_buffer(){return buffer;}
-  int return_pos(){return pos;};
-  
 private:
   string buffer;
   int pos;

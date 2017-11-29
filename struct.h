@@ -4,8 +4,6 @@
 #include "atom.h"
 #include <vector>
 #include <string>
-#include <typeinfo>
-#include <iostream>
 
 using std::string;
 
@@ -23,12 +21,9 @@ public:
     return _name;
   }
   string symbol() const {
-	  
+    if(_args.empty())
+    return  _name.symbol() + "()";
     string ret = _name.symbol() + "(";
-	if (_args.size()==0){
-		ret=_name.symbol()+"()";
-		return ret;
-	}
     std::vector<Term *>::const_iterator it = _args.begin();
     for (; it != _args.end()-1; ++it)
       ret += (*it)->symbol()+", ";
@@ -37,42 +32,13 @@ public:
   }
   string value() const {
     string ret = _name.symbol() + "(";
-	if (_args.size()==0)
-	{
-		ret=_name.symbol()+"()";
-		return ret;
-	}
     std::vector<Term *>::const_iterator it = _args.begin();
     for (; it != _args.end()-1; ++it)
       ret += (*it)->value()+", ";
     ret  += (*it)->value()+")";
     return ret;
   }
-  bool match(Term &term)
-  {
-	  Struct * ps = dynamic_cast<Struct *>(&term);
-	  if (typeid(term)!=typeid(Struct))
-		  return false;
-	  if (typeid(term)==typeid(Struct))
-	  {
-		  if (ps){
-			  if (!_name.match(ps->_name))
-				  return false;
-			  if(_args.size()!= ps->_args.size())
-				  return false;
-
-			  for(int i=0;i<_args.size();i++)
-			  {
-				  if (! ( ps->_args[i]->match(*_args[i]) ) )
-						  return false;
-			  }
-			 
-		  }
-      return true;
-	  }
-  }
-
-  int arity(){return _args.size();}
+  int arity() const {return _args.size();}
 private:
   Atom _name;
   std::vector<Term *> _args;

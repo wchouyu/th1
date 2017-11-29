@@ -3,6 +3,8 @@
 #include "variable.h"
 #include "struct.h"
 
+
+
 TEST(Struct, hobby)
 {
   Atom tom("tom");
@@ -233,7 +235,5 @@ TEST(Struct, matchWithVar)
   Struct s1(Atom("s"), v);
   std::vector<Term *> v2 = {&Y};
   Struct s2(Atom("s"), v2);
-
-
   ASSERT_TRUE(s1.match(s2));
 }
