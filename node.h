@@ -20,8 +20,8 @@ public:
 		  return left->evaluate()&&right->evaluate();
 	  }
 	  else if (payload==EQUALITY){//std::cout << "here3\n";
-		  std::cout << left->term->symbol() << "\n";
-		  std::cout << right->term->symbol() << "\n";
+		  //std::cout << left->term->symbol() << "\n";
+		  //std::cout << right->term->symbol() << "\n";
 		  return left->term->match(*right->term);
 
 	  }

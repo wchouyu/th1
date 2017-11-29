@@ -297,7 +297,7 @@ TEST_F(ParserTest, TwoVariableMatching2) {
   EXPECT_EQ("1", terms[2]->value());
 }
 
-/*
+
 TEST_F(ParserTest, TwoVariableMatching3) {
   Scanner scanner("X=Y, X=1.");
   Parser parser(scanner);
@@ -367,6 +367,7 @@ TEST_F(ParserTest, TwoVariableMatching4) {
   EXPECT_EQ("1", terms[2]->value());
 }
 
+
 TEST_F(ParserTest, ConjTwoMatchingFailure) {
   Scanner scanner("X=1, X=2.");
   Parser parser(scanner);
@@ -427,6 +428,6 @@ TEST_F(ParserTest, MatchingSuccess) {
   EXPECT_EQ("1", terms[0]->value());
   EXPECT_EQ("2", terms[2]->value());
   EXPECT_EQ("s(s(2))", terms[4]->value());
-}*/
+}
 
 #endif

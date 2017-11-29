@@ -98,8 +98,29 @@ public:
 		  nodes.push_back(new Node(TERM,actualTerm,nullptr,nullptr));
 	  }
 
+
 	  for(int i=0;i<nodes.size();i++)
 	  {
+
+		  //////////////////////////
+		   for(int j=i+1;j<nodes.size();j++)
+		{
+			
+			if (nodes[i]->term!=NULL && nodes[j]->term!=NULL)
+		  {
+			  if (nodes[i]->payload == TERM){
+					if (nodes[i]->term->symbol()==nodes[j]->term->symbol())
+					{
+						std::cout << nodes[i]->term->symbol();
+						 nodes[i]->term->match(*nodes[j]->term);
+					}
+			  }	  
+			}
+		}
+		  //////////////////////////////
+
+
+
 		  if(nodes[i]->payload==SEMICOLON||nodes[i]->payload==COMMA||nodes[i]->payload==EQUALITY)
 		  {
 			  if (nodes.size()<=7){
@@ -140,7 +161,7 @@ public:
 						nodes[i]->right=nodes[10];
 					}
 			  }
-
+			  
 		  }
 	  }
 	  
@@ -148,16 +169,7 @@ public:
   
   Node * expressionTree()
   {
-	  for (int i=0;i<nodes.size();i++)
-	  {
-		  int j =0;
-		  if (nodes[i]->payload==EQUALITY)
-		  {
-			  //std::cout << "false\n";
-			  _terms[j]->match(*_terms[j+1]);
-			  j=j+2;
-		  }
-	  }
+	 
 	  if (nodes.size() == 3)	return nodes[1];
 	  else if (nodes.size() == 7) return nodes[3];
 	  else if (nodes.size() == 11) {return nodes[3];}
