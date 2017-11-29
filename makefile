@@ -16,10 +16,6 @@ mainVariable.o: mainVariable.cpp utVariable.h variable.h
 		g++ -std=c++11 -c mainVariable.cpp
 list.o:list.cpp list.h
 		g++ -std=c++11 -c list.cpp
-#exp: mainExp.o
-#	g++ -o exp mainExp.o -lgtest -lpthread
-#mainExp.o: mainExp.cpp exp.h global.h
-#	g++ -std=c++11 -c mainExp.cpp
 
 hw6: mainScanner.o atom.o list.o scanner.h utScanner.h utParser.h parser.h
 	g++ -o hw6 mainScanner.o atom.o list.o -lgtest -lpthread
