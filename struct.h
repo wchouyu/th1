@@ -12,7 +12,7 @@ public:
   Struct(Atom name, std::vector<Term *> args): _name(name) {
     _args = args;
   }
-
+  
   Term * args(int index) {
     return _args[index];
   }
@@ -39,9 +39,10 @@ public:
     return ret;
   }
   int arity() const {return _args.size();}
+  std::vector<Term *> _args;
 private:
   Atom _name;
-  std::vector<Term *> _args;
+  
 };
 
 #endif

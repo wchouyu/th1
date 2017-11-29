@@ -103,7 +103,7 @@ public:
 	  }
 
 
-	  
+	  int stringfind=0;
 	  
 	  for(int i=0;i<nodes.size();i++)
 	  {
@@ -112,8 +112,26 @@ public:
 		   for(int j=i+1;j<nodes.size();j++)
 		{
 			
+
 			if (nodes[i]->term!=NULL && nodes[j]->term!=NULL)
 		  {
+
+
+
+			  string s = nodes[i]->term->symbol();//struct s(y)
+			string s2=nodes[j]->term->symbol();
+			
+			if (nodes[i]->payload == TERM && nodes[j]->payload == TERM)
+			{
+				stringfind = s.find(s2);
+				if (stringfind!=-1 && stringfind !=0)	{
+					Struct *ps = dynamic_cast<Struct *>(nodes[i]->term);
+					if (ps){
+						ps->_args[0]->match(*nodes[j]->term);
+					}
+					}
+			}
+			  ///////////////
 			  if (nodes[i]->payload == TERM){
 					if (nodes[i]->term->symbol()==nodes[j]->term->symbol())
 					{
