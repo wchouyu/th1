@@ -72,6 +72,8 @@ public:
   }
   void matchings()
   {
+
+	  int check =0;
 	  Term *actualTerm=createTerm();
 	  _terms.push_back(actualTerm);
 	  nodes.push_back(new Node(TERM,actualTerm,nullptr,nullptr));
@@ -90,8 +92,10 @@ public:
 		  }
 		  else if(_currentToken == ';')
 		  {
+			  check =1;
 			  _currentToken=_scanner.nextToken();
 			  nodes.push_back(new Node(SEMICOLON,nullptr,nullptr,nullptr));
+			  
 		  }
 		  actualTerm=createTerm();
 		  _terms.push_back(actualTerm);
@@ -99,9 +103,11 @@ public:
 	  }
 
 
+	  
+	  
 	  for(int i=0;i<nodes.size();i++)
 	  {
-
+		  
 		  //////////////////////////
 		   for(int j=i+1;j<nodes.size();j++)
 		{
@@ -111,8 +117,10 @@ public:
 			  if (nodes[i]->payload == TERM){
 					if (nodes[i]->term->symbol()==nodes[j]->term->symbol())
 					{
-						std::cout << nodes[i]->term->symbol();
-						 nodes[i]->term->match(*nodes[j]->term);
+						
+						if (check!=1){//std::cout << check << "\n";
+							nodes[i]->term->match(*nodes[j]->term);}
+						//std::cout << nodes[i]->term->symbol();
 					}
 			  }	  
 			}

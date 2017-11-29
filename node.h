@@ -12,16 +12,17 @@ public:
   
   bool evaluate()
   {
+	  bool chek1=false;bool chek2=false;
 	  if (right == NULL) std::cout<<"error\n";
-	  if (payload==SEMICOLON){//std::cout << "here\n";
-		  return left->evaluate()||right->evaluate();
+	  if (payload==SEMICOLON){std::cout << "here\n";chek1=left->evaluate();chek2=right->evaluate();
+		  return chek1||chek2;
 	  }
-	  else if (payload==COMMA){//std::cout << "here2\n";
+	  else if (payload==COMMA){std::cout << "here2\n";
 		  return left->evaluate()&&right->evaluate();
 	  }
-	  else if (payload==EQUALITY){//std::cout << "here3\n";
-		  //std::cout << left->term->symbol() << "\n";
-		  //std::cout << right->term->symbol() << "\n";
+	  else if (payload==EQUALITY){std::cout << "here3\n";
+		  std::cout << left->term->symbol() << "\n";
+		  std::cout << right->term->symbol() << "\n";
 		  return left->term->match(*right->term);
 
 	  }
