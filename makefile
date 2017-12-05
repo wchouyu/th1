@@ -1,7 +1,5 @@
 all: hw7
 
-
-
 hw7: main.o atom.o global.h list.o parser.h scanner.h struct.h variable.h iterator.h
 ifeq (${OS}, Windows_NT)
 	g++ -o hw7 main.o -lgtest
