@@ -1,10 +1,15 @@
 #include "atom.h"
 #include "variable.h"
+#include "iterator.h"
 #include <typeinfo>
 
-bool Term::match(Term & term){
-  if (typeid(term) ==  typeid(Variable))
-    return term.match(*this);
+Iterator * Term::createIterator(){
+  return new NullIterator(this);
+}
+
+bool Term::match(Term & a){
+  if (typeid(a) ==  typeid(Variable))
+    return a.match(*this);
   else
-    return symbol() == term.symbol();
+    return symbol() == a.symbol();
 }

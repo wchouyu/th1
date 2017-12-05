@@ -3,8 +3,6 @@
 #include "variable.h"
 #include "struct.h"
 
-
-
 TEST(Struct, hobby)
 {
   Atom tom("tom");

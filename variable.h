@@ -3,7 +3,6 @@
 
 #include <string>
 #include "atom.h"
-#include <iostream>
 using std::string;
 
 class Variable : public Term {
@@ -24,7 +23,6 @@ public:
     }
     return _inst->match(term);
   }
-
 private:
   Term * _inst;
 };
