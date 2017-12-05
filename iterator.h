@@ -5,6 +5,8 @@
 #include "list.h"
 #include <queue>
 using namespace std;
+
+
 class Iterator {
 public:
   virtual void first() = 0;
