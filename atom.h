@@ -6,6 +6,7 @@
 using std::string;
 
 class Iterator;
+
 class Term{
 public:
   virtual string symbol() const {return _symbol;}
