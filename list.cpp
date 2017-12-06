@@ -7,14 +7,14 @@
 #include "iterator.h"
 using std::vector;
 
-Iterator * List::createIterator(){
+Iterator<Term*> * List::createIterator(){
   return new ListIterator(this);
 }
-Iterator *List::createDFSIterator()
+Iterator<Term*> *List::createDFSIterator()
 {
   return new DFSIterator(this);
 }
-Iterator *List::createBFSIterator()
+Iterator<Term*> *List::createBFSIterator()
 {
   return new BFSIterator(this);
 }

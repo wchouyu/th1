@@ -3,24 +3,29 @@
 
 #include "struct.h"
 #include "list.h"
+
 #include <queue>
 using namespace std;
 
+//T=*Term
 
+
+template <class T>
 class Iterator {
 public:
   virtual void first() = 0;
   virtual void next() = 0;
-  virtual Term* currentItem() const  = 0;
+  virtual T  currentItem() const  = 0;
   virtual bool isDone() const = 0;
 };
 
-class NullIterator :public Iterator{
+
+class NullIterator :public Iterator<Term*>{
 public:
-  NullIterator(Term *n){}
+  NullIterator(Term* n){}
   void first(){}
   void next(){}
-  Term * currentItem() const{
+  Term* currentItem() const{
       return nullptr;
   }
   bool isDone() const{
@@ -29,9 +34,12 @@ public:
 
 };
 
-class StructIterator :public Iterator {
+class StructIterator:public Iterator<Term*>
+{
 public:
   friend class Struct;
+  StructIterator(Struct *s): _index(0), _s(s) {}
+
   void first() {
     _index = 0;
   }
@@ -48,12 +56,12 @@ public:
     _index++;
   }
 private:
-  StructIterator(Struct *s): _index(0), _s(s) {}
+
   int _index;
   Struct* _s;
 };
 
-class ListIterator :public Iterator {
+class ListIterator :public Iterator<Term*>{
 public:
   ListIterator(List *list): _index(0), _list(list) {}
 
@@ -76,7 +84,8 @@ private:
   int _index;
   List* _list;
 };
-class DFSIterator:public Iterator{
+
+class DFSIterator:public Iterator<Term*>{
 public:
 
   DFSIterator(Term *term): _index(0),_term(term){}
@@ -114,7 +123,7 @@ private:
   std::vector<Term*>_terms;
 };
 
-class BFSIterator:public Iterator{
+class BFSIterator:public Iterator<Term*>{
 public:
   BFSIterator(Term *term):_index(0),_term(term){}
   void first(){

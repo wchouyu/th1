@@ -8,7 +8,7 @@ else
 endif
 
 
-main.o: main.cpp utParser.h
+main.o: main.cpp utIterator.h
 	g++ --std=gnu++0x -c main.cpp
 	
 atom.o: atom.h atom.cpp
@@ -20,6 +20,6 @@ list.o: list.h list.cpp
 
 
 clean:
-	rm -f *.o hw5
+	rm -f *.o hw7
 stat:
 	wc *.h *.cpp
