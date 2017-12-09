@@ -6,6 +6,8 @@
 #include "atom.h"
 #include "list.cpp"
 #include "atom.cpp"
+
+
 int main( int argc , char **argv )
 {
     testing :: InitGoogleTest( &argc , argv ) ;
