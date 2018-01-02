@@ -2,6 +2,8 @@
 #define ATOM_H
 
 
+
+
 #include <string>
 #include <sstream>
 using std::string;
