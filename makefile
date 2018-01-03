@@ -3,7 +3,7 @@ all:hw8
 
 
 hw8: main.o atom.o list.o struct.o
-		g++ -o hw8 main.o atom.o list.o struct.o -lgtest -pthread
+		g++ -o hw8 main.o atom.o list.o struct.o -lgtest -lpthread
 main.o: main.cpp  exception.h
 		g++ --std=gnu++0x -c main.cpp
 
