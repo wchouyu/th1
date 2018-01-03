@@ -18,8 +18,12 @@ int main(){
 	string str_string="";
 	cout <<"?- ";
 	while(true){
-		cout <<"?- ";
-		cin >> input;
+		getline (cin,input);
+		while (input.empty())
+		{
+			cout << "?- ";
+			getline (cin,input);
+		}
 		if (input == "halt.")
 			break;
 		str_string=str_string+input;
@@ -30,7 +34,7 @@ int main(){
 			str_string="";
 			cout <<"?- ";
 		}		
-		else{
+		else if (input.find(",")!=string::npos || input.find(";")!=string::npos){
 			cout << '|' << "\t";
 			//continue;
 		}
