@@ -53,7 +53,7 @@ public:
       _terms.erase(_terms.begin() + startIndexOfStructArgs, _terms.end());
       return new Struct(structName, args);
     } else {
-      throw string("unexpected token");
+      throw string("Unbalanced operator");
     }
   }
 
@@ -69,7 +69,7 @@ public:
       }
       return new List(args);
     } else {
-      throw string("unexpected token");
+      throw string("Unbalanced operator");
     }
   }
 
@@ -81,13 +81,29 @@ public:
     // createTerm();
     disjunctionMatch();
     restDisjunctionMatch();
-    if (createTerm() != nullptr || _currentToken != '.')
+
+    if (createTerm() != nullptr  )
       throw string("expected token.");
+
+	if (!matched)	throw s_buf;
+	if (_currentToken != '.'){
+		throw string ("Missing token '.'");
+
+	
+	}
   }
+  
 
   void restDisjunctionMatch() {
+	  if (_scanner.currentChar() == '.' && un1==true)
+		throw string ("Unexpected ';' before '.'");
+	  if (_scanner.currentChar() == '.' && un2==true)
+		throw string ("Unexpected ',' before '.'");
+
     if (_scanner.currentChar() == ';') {
+	
       createTerm();
+	  
       disjunctionMatch();
       Exp *right = _expStack.top();
       _expStack.pop();
@@ -99,13 +115,20 @@ public:
   }
 
   void disjunctionMatch() {
+	
     conjunctionMatch();
     restConjunctionMatch();
   }
 
   void restConjunctionMatch() {
+	  
     if (_scanner.currentChar() == ',') {
+	
+		
       createTerm();
+	 
+	  if (_scanner.currentChar() == '.')
+			throw string("Unexpected ',' before '.'");
       conjunctionMatch();
       Exp *right = _expStack.top();
       _expStack.pop();
@@ -117,17 +140,34 @@ public:
   }
 
   void conjunctionMatch() {
+	
     Term * left = createTerm();
+
     if (createTerm() == nullptr && _currentToken == '=') {
       Term * right = createTerm();
       _expStack.push(new MatchExp(left, right));
+	  matched=true;
     }
+	else if (_currentToken ==';'){
+		un1=true;
+	}
+	else if (_currentToken==','){
+		un2=true;
+	}
+	else {
+		
+		s_buf = ""+left->symbol()+" does never get assignment";
+		
+	}
   }
 
   Exp* getExpressionTree(){
     return _expStack.top();
   }
-
+  bool matched=false;
+  bool un1=false;
+  bool un2=false;
+  string s_buf;
 private:
   FRIEND_TEST(ParserTest, createArgs);
   FRIEND_TEST(ParserTest,ListOfTermsEmpty);
