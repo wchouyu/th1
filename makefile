@@ -1,9 +1,13 @@
-all:hw8
+all:hw8 shell
 
 
+shell: shell.o atom.o list.o struct.o
+		g++ -o shell shell.o atom.o list.o struct.o -lgtest -pthread
+shell.o: shell.cpp
+		g++ --std=gnu++0x -c shell.cpp
 
 hw8: main.o atom.o list.o struct.o
-		g++ -o hw8 main.o atom.o list.o struct.o -lgtest -lpthread
+		g++ -o hw8 main.o atom.o list.o struct.o -lgtest -pthread
 main.o: main.cpp  exception.h
 		g++ --std=gnu++0x -c main.cpp
 
