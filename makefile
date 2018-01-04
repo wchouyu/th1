@@ -2,12 +2,23 @@ all:hw8 shell
 
 
 shell: shell.o atom.o list.o struct.o
-		g++ -o shell shell.o atom.o list.o struct.o -lgtest -pthread
+ifeq (${OS}, Windows_NT)
+	g++ -o shell shell.o atom.o list.o struct.o -lgtest 
+else
+	g++ -o shell shell.o atom.o list.o struct.o -lgtest -lpthread
+endif
+
+
 shell.o: shell.cpp
 		g++ -std=gnu++0x -c shell.cpp
 
 hw8: main.o atom.o list.o struct.o
-		g++ -o hw8 main.o atom.o list.o struct.o -lgtest -pthread
+		g++ -o hw8 main.o atom.o list.o struct.o -lgtest -lpthread
+ifeq (${OS}, Windows_NT)
+	g++ -o hw8 main.o atom.o list.o struct.o -lgtest 
+else
+	g++ -o hw8 main.o atom.o list.o struct.o -lgtest -lpthread
+endif
 main.o: main.cpp  exception.h expression.h
 		g++ -std=gnu++0x -c main.cpp 
 
