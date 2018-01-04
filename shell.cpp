@@ -40,7 +40,9 @@ int main(){
 			str_string="";
 			cout <<"?- ";
 		}		
-		else if (input.find(",")!=string::npos || input.find(";")!=string::npos){
+		//else if (input.find(",")!=string::npos || input.find(";")!=string::npos)
+		
+		else{
 			cout << '|' << "\t";
 			//continue;
 		}
