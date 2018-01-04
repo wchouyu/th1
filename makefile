@@ -13,7 +13,6 @@ shell.o: shell.cpp
 		g++ -std=gnu++0x -c shell.cpp
 
 hw8: main.o atom.o list.o struct.o
-		g++ -o hw8 main.o atom.o list.o struct.o -lgtest -lpthread
 ifeq (${OS}, Windows_NT)
 	g++ -o hw8 main.o atom.o list.o struct.o -lgtest 
 else
