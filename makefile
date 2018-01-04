@@ -60,18 +60,7 @@ mainIterator.o: mainIterator.cpp utIterator.h
 
 
 	
-#utTerm: mainTerm.o term.o struct.o var.o list.o
-#	g++ -o utTerm mainTerm.o term.o var.o struct.o list.o -lgtest -lpthread
-#mainTerm.o: mainTerm.cpp utTerm.h term.h var.h utStruct.h struct.h list.h utList.h
-#	g++ -std=c++11 -c mainTerm.cpp
-#term.o: term.h term.cpp
-#	g++ -std=c++11 -c term.cpp
-#struct.o: struct.h struct.cpp
-#	g++ -std=c++11 -c struct.cpp
-#var.o: var.h var.cpp
-#g++ -std=c++11 -c var.cpp
-#list.o: list.h list.cpp term.h var.h
-#	g++ -std=c++11 -c list.cpp
+
 clean:
 	rm -f *.o  utAtom utVariable utScanner hw8 shell
 stat:
