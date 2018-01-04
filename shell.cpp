@@ -30,9 +30,17 @@ int main(){
 			cout << "?- ";
 			getline (cin,input);
 		}
+		
+		if (input.at(0)==';' || input.at(0)==',' || input.at(0) == '.'){
+			cout << "unexpected token began with " << input.at(0) << "\n";
+			cout <<"?- ";
+			continue;
+		}
 		if (input == "halt.")
 			break;
 		str_string=str_string+input;
+		
+
 		if (input.find(".")!=string::npos)
 		{
 			create(str_string);
