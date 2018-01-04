@@ -60,13 +60,13 @@ public:
 
   string extractAtom() {
     int posBegin = position();
-    for (;isalnum(buffer[pos]); ++pos);
+    for (;isalnum(buffer[pos])|| buffer[pos] == '_'; ++pos);
     return buffer.substr(posBegin, pos-posBegin);
   }
 
   string extractAtomSC() {
     int posBegin = position();
-    for (;isSpecialCh(buffer[pos]); ++pos);
+    for (;isSpecialCh(buffer[pos]) || buffer[pos] == '_'; ++pos);
     return buffer.substr(posBegin, pos-posBegin);
   }
 

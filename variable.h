@@ -25,7 +25,7 @@ public:
       _instance = &term;
     return true;
   }
-
+   string type() const {return "Var";}
   Variable* getVariable() {
     return this;
   }

@@ -14,15 +14,29 @@ using std::string;
 
 using std::stack;
 
+
+
 class Parser{
 public:
+	
   Parser(Scanner scanner) : _scanner(scanner), _terms() {}
 
   Term* createTerm(){
     int token = _scanner.nextToken();
     _currentToken = token;
     if(token == VAR){
-      return new Variable(symtable[_scanner.tokenValue()].first);
+		Variable *ch_reuse=new Variable(symtable[_scanner.tokenValue()].first);
+		std::cout << ch_reuse->symbol() << "\n";
+		if (record.size() == 0 ){
+			record.push_back(ch_reuse);}
+		for (int i=0;i<record.size();i++)
+		{
+			if (record[i]->symbol()==ch_reuse->symbol())
+				return record[i];
+			else
+				record.push_back(ch_reuse);
+		}
+		return ch_reuse;
     }else if(token == NUMBER){
       return new Number(_scanner.tokenValue());
     }else if(token == ATOM || token == ATOMSC){
@@ -126,7 +140,7 @@ public:
 	
 		
       createTerm();
-	 
+	
 	  if (_scanner.currentChar() == '.')
 			throw string("Unexpected ',' before '.'");
       conjunctionMatch();
@@ -134,6 +148,10 @@ public:
       _expStack.pop();
       Exp *left = _expStack.top();
       _expStack.pop();
+	  ///////////////
+	  
+
+	  ///////////////
       _expStack.push(new ConjExp(left, right));
       restConjunctionMatch();
     }
@@ -169,11 +187,11 @@ public:
   bool un2=false;
   string s_buf;
 private:
-  FRIEND_TEST(ParserTest, createArgs);
-  FRIEND_TEST(ParserTest,ListOfTermsEmpty);
-  FRIEND_TEST(ParserTest,listofTermsTwoNumber);
-  FRIEND_TEST(ParserTest, createTerm_nestedStruct3);
-  FRIEND_TEST(ParserTest, createTerms);
+  //FRIEND_TEST(ParserTest, createArgs);
+  //FRIEND_TEST(ParserTest,ListOfTermsEmpty);
+  //FRIEND_TEST(ParserTest,listofTermsTwoNumber);
+  //FRIEND_TEST(ParserTest, createTerm_nestedStruct3);
+  //FRIEND_TEST(ParserTest, createTerms);
 
   void createTerms() {
     Term* term = createTerm();
@@ -191,5 +209,9 @@ private:
   int _currentToken;
   //MatchExp* _root;
   stack<Exp*> _expStack;
+
+  vector<Variable *> record;
+  
+	
 };
 #endif

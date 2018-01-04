@@ -32,7 +32,7 @@ public:
   int arity() const {
     return _elements.size();
   }
-
+   string type() const {return "List";}
   Iterator * createIterator();
 private:
   vector<Term *> _elements;

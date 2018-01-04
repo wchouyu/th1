@@ -11,7 +11,7 @@ class Struct: public Term {
 public:
   Struct(Atom name, std::vector<Term *> args): _name(name), _args(args){
   }
-
+   string type() const {return "Struct";}
 
   bool match(Term &term) {
     if (term.getVariable() != nullptr) {

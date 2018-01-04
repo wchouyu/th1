@@ -20,6 +20,7 @@ public:
   virtual Variable* getVariable() {
     return nullptr;
   }
+  virtual string type() const {return "Term";}
 protected:
   Term (string s = ""):_symbol(s) {}
   string _symbol;
@@ -28,6 +29,7 @@ protected:
 class Atom : public Term{
 public:
   Atom(string s):Term(s) {}
+    string type() const {return "Atom";}
 };
 
 class Number : public Term{
@@ -37,6 +39,7 @@ public:
       strs << db;
       _symbol = strs.str();
   }
+   string type() const {return "Number";}
 };
 
 #endif

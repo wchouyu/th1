@@ -12,18 +12,19 @@
  * 
  */
 
-/*
+
 TEST(Shell, varMatchAtomSuc) {
   Scanner s("FILCO=awesome.");
   Parser p(s);
   try{
     p.buildExpression();
-   
+	string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("FILCO = awesome.", result);
   } catch (std::string & msg) {
     FAIL() << msg;
   }
+
 }
 
 TEST(Shell, atomMatchAtomFail) {
@@ -32,7 +33,7 @@ TEST(Shell, atomMatchAtomFail) {
   try{
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("false.", result);
   } catch (std::string & msg) {
@@ -46,7 +47,7 @@ TEST(Shell, varMatchList) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("Painful = [Clerk, forgot, pipette].", result);
   } catch (std::string & msg) {
@@ -60,7 +61,7 @@ TEST(Shell, varMatchStruct) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("Pitiful = binding([rope, rope, rope], Turtle, oil).", result);
   } catch (std::string &msg) {
@@ -74,7 +75,7 @@ TEST(Shell, varMatchItself) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("true.", result);
   } catch (std::string &msg) {
@@ -88,14 +89,14 @@ TEST(Shell, varMachingListThatIncludeVar) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("X = [marry, tom], Y = marry.", result);
   } catch (std::string &msg) {
     FAIL() << msg;
   }
 }
-
+/*
 TEST(Shell, varMachingStructThatIncludeVar) {
   Scanner s("X=s(Y,marry), Y=tom.");
   Parser p(s);
@@ -108,16 +109,16 @@ TEST(Shell, varMachingStructThatIncludeVar) {
   } catch (std::string &msg) {
     FAIL() << msg;
   }
-}
+}*/
 
-
+/*
 TEST(Shell, conjunctionMatching_false) {
   Scanner s("X=1, X=2.");
   Parser p(s);
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("false.", result);
   } catch (std::string &msg) {

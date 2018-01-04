@@ -8,8 +8,8 @@ shell.o: shell.cpp
 
 hw8: main.o atom.o list.o struct.o
 		g++ -o hw8 main.o atom.o list.o struct.o -lgtest -pthread
-main.o: main.cpp  exception.h
-		g++ --std=gnu++0x -c main.cpp
+main.o: main.cpp  exception.h expression.h
+		g++ --std=gnu++0x -c main.cpp 
 
 
 utAtom: mainAtom.o list.o atom.o struct.o
@@ -32,10 +32,10 @@ struct.o:struct.cpp struct.h
 
 
 		
-#exp: mainExp.o
-#	g++ -o exp mainExp.o -lgtest -lpthread
-#mainExp.o: mainExp.cpp exp.h global.h
-#	g++ -std=c++11 -c mainExp.cpp
+exp: mainExp.o
+	g++ -o exp mainExp.o -lgtest -lpthread
+mainExp.o: mainExp.cpp exp.h global.h
+	g++ --std=gnu++0x -c mainExp.cpp
 
 utScanner: mainScanner.o atom.o list.o struct.o scanner.h utScanner.h utParser.h parser.h
 	g++ -o utScanner mainScanner.o atom.o list.o struct.o -lgtest -lpthread
@@ -63,6 +63,6 @@ mainIterator.o: mainIterator.cpp utIterator.h
 #list.o: list.h list.cpp term.h var.h
 #	g++ -std=c++11 -c list.cpp
 clean:
-	rm -f *.o  utAtom utVariable utScanner 
+	rm -f *.o  utAtom utVariable utScanner hw8 shell
 stat:
 	wc *.h *.cpp

@@ -11,7 +11,8 @@ void create(string str_string)
 	Scanner scanner(str_string);
 	Parser parser(scanner);
 	parser.buildExpression();
-	parser.getExpressionTree()->evaluate();
+	//parser.getExpressionTree()->evaluate();
+	
 }
 int main(){
 	string input;
