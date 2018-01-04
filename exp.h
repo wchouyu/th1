@@ -56,8 +56,21 @@ public:
   {
 	  string ret = "";
 	  if (evaluate()){
-		  ret= _left->result()+", "+_right->result()+".";
+		  string left=_left->result();
+		  left.pop_back();
+		  string right=_right->result();
+		  right.pop_back();
+		  ret= left+", "+right+".";
+		  if (left==right || right=="true")
+			  ret=left+".";
+		  else if (left=="true")	ret=right+".";
+		  if (left=="false" || right == "false")
+			  ret="false";
+		  if (left.find(right)!=string::npos)
+			  ret=left+".";
 	  }
+	  else
+		   ret+="false.";
 	  return ret;
   }
 private:
@@ -76,7 +89,17 @@ public:
   }
   string result()
   {
-	  string ret = "ff2";
+	  string ret = "";
+	  if (evaluate()){
+		  string left=_left->result();
+		  left.pop_back();
+		  string right=_right->result();
+		  right.pop_back();
+		  ret= left+"; "+right+".";
+		  if (right=="false")	ret=left+".";
+		  else if (left=="false")	ret=right+".";
+	  }else	ret="false";
+
 	  return ret;
   }
 private:

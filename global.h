@@ -8,6 +8,8 @@ using std::pair;
 #include <string>
 using std::string;
 
+int mode=0;
+
 const int NONE = -1; // no tokenValue
 
 // tokens return by the scanner

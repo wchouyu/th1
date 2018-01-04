@@ -8,6 +8,8 @@ using std::string;
 class Variable;
 class Struct;
 class Iterator;
+
+
 class Term {
 public:
   virtual string symbol() const {return _symbol;}

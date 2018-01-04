@@ -25,8 +25,11 @@ public:
     int token = _scanner.nextToken();
     _currentToken = token;
     if(token == VAR){
+
 		Variable *ch_reuse=new Variable(symtable[_scanner.tokenValue()].first);
-		std::cout << ch_reuse->symbol() << "\n";
+
+		if (mode==0){
+		//std::cout << ch_reuse->symbol() << "\n";
 		if (record.size() == 0 ){
 			record.push_back(ch_reuse);}
 		for (int i=0;i<record.size();i++)
@@ -35,7 +38,7 @@ public:
 				return record[i];
 			else
 				record.push_back(ch_reuse);
-		}
+		}}
 		return ch_reuse;
     }else if(token == NUMBER){
       return new Number(_scanner.tokenValue());
@@ -115,7 +118,7 @@ public:
 		throw string ("Unexpected ',' before '.'");
 
     if (_scanner.currentChar() == ';') {
-	
+	mode=1;
       createTerm();
 	  
       disjunctionMatch();
@@ -135,7 +138,7 @@ public:
   }
 
   void restConjunctionMatch() {
-	  
+	  mode=0;
     if (_scanner.currentChar() == ',') {
 	
 		

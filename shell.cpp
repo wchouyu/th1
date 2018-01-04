@@ -10,9 +10,14 @@ void create(string str_string)
 {
 	Scanner scanner(str_string);
 	Parser parser(scanner);
-	parser.buildExpression();
+	try{
+		parser.buildExpression();
+		string result = parser.getExpressionTree()->result();
+		cout << result << "\n";
 	//parser.getExpressionTree()->evaluate();
-	
+	}catch(std::string &msg){
+		std::cout <<  msg << "\n";
+	}
 }
 int main(){
 	string input;
@@ -30,8 +35,8 @@ int main(){
 		str_string=str_string+input;
 		if (input.find(".")!=string::npos)
 		{
-			//create(str_string);
-			cout << str_string << "\n";
+			create(str_string);
+			//cout << str_string << "\n";
 			str_string="";
 			cout <<"?- ";
 		}		

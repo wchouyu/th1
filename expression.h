@@ -96,22 +96,22 @@ TEST(Shell, varMachingListThatIncludeVar) {
     FAIL() << msg;
   }
 }
-/*
+
 TEST(Shell, varMachingStructThatIncludeVar) {
   Scanner s("X=s(Y,marry), Y=tom.");
   Parser p(s);
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("X = s(tom, marry), Y = tom.", result);
   } catch (std::string &msg) {
     FAIL() << msg;
   }
-}*/
+}
 
-/*
+
 TEST(Shell, conjunctionMatching_false) {
   Scanner s("X=1, X=2.");
   Parser p(s);
@@ -132,7 +132,7 @@ TEST(Shell, conjunctionMatching_diffExp) {
   try {
     p.buildExpression();
     
-     
+     string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("X = 1, Y = 2.", result);
   } catch (std::string &msg) {
@@ -146,7 +146,7 @@ TEST(Shell, conjunctionMatching_sameExp) {
   try {
     p.buildExpression();
     
-     
+     string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("X = 1.", result);
   } catch (std::string &msg) {
@@ -160,7 +160,7 @@ TEST(Shell, conjunctionMatching_true) {
   try {
     p.buildExpression();
     
-     
+     string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("true.", result);
   } catch (std::string &msg) {
@@ -174,7 +174,7 @@ TEST(Shell, conjunctionMatching_trueAndExp) {
   try {
     p.buildExpression();
     
-   
+   string result = p.getExpressionTree()->result();
     ASSERT_EQ("Y = 1.", result);
   } catch (std::string &msg) {
     FAIL() << msg;
@@ -187,7 +187,7 @@ TEST(Shell, conjunctionMatching_expAndtrue) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("Y = 1.", result);
   } catch (std::string &msg) {
@@ -201,7 +201,7 @@ TEST(Shell, conjunctionMatching_trueAndfalse) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("false.", result);
   } catch (std::string &msg) {
@@ -215,7 +215,7 @@ TEST(Shell, conjunctionMatching_falseAndtrue) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("false.", result);
   } catch (std::string &msg) {
@@ -229,7 +229,7 @@ TEST(Shell, conjunctionMatching_falseAndfalse) {
   try {
     p.buildExpression();
     
-     
+     string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("false.", result);
   } catch (std::string &msg) { 
@@ -243,7 +243,7 @@ TEST(Shell, conjunctionMatching_duplicateExp) {
   try {
     p.buildExpression();
     
-     
+     string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("Y = 1, X = 2.", result);
   } catch (std::string &msg) { 
@@ -257,7 +257,7 @@ TEST(Shell, disjunctionMatching1) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("X = 1; X = 2.", result);
   } catch (std::string &msg) {
@@ -271,7 +271,7 @@ TEST(Shell, disjunctionMatching2) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("X = 1.", result);
   } catch (std::string &msg) {
@@ -285,7 +285,7 @@ TEST(Shell, disjunctionMatching3) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("X = 1; X = 1, Y = 2.", result);
   } catch (std::string &msg) {
@@ -299,7 +299,7 @@ TEST(Shell, disjunctionMatching4) {
   try {
     p.buildExpression();
     
-     
+     string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("X = 1; X = 3.", result);
   } catch (std::string &msg) {
@@ -313,7 +313,7 @@ TEST(Shell, disjunctionMatching5) {
   try {
     p.buildExpression();
     
-   
+   string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("X = 1; true; Y = 2.", result);
   } catch (std::string &msg) {
@@ -327,7 +327,7 @@ TEST(Shell, disjunctionMatching6) {
   try {
     p.buildExpression();
     
-    
+    string result = p.getExpressionTree()->result();
 
     ASSERT_EQ("X = 1; Z = 3.", result);
   } catch (std::string &msg) {
@@ -336,12 +336,12 @@ TEST(Shell, disjunctionMatching6) {
 }
 
 
-TEST(Shell, exceptionMissingPeriodToken) {
+TEST(Shell, exceptionMissingPeriodToken2) {
   Scanner s("X=1");
   Parser p(s);
   try {
     p.buildExpression();
-    
+    string result = p.getExpressionTree()->result();
      
     
     FAIL() << "It should throw an exception: Missing token '.'";
@@ -349,6 +349,6 @@ TEST(Shell, exceptionMissingPeriodToken) {
     ASSERT_EQ("Missing token '.'", msg);
   }
 }
-*/
+
 
 #endif
